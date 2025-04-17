@@ -19,6 +19,7 @@ public class Estudiante implements Serializable{
         this.escuela = escuela;
     }
 
+    
     @Override
     public String toString() {
         return "Estudiante{" + "Nombres y apellidos=" + nombre + ", Codigo de matricula=" + codigo + ", "
