@@ -12,15 +12,19 @@ import java.io.*;
  */
 public class Docente extends Persona implements Serializable{
     private String departamento;
+    private String especialidad;
+    private String codigo;
     private String tipo;
     
     public Docente () {
-        this("ND","NT");
+        this("ND","NT","NE","NE");
     }
     
-    public Docente(String departamento,String tipo) {
+    public Docente(String departamento,String tipo,String especialidad,String codigo) {
         this.departamento = departamento;
+        this.codigo = codigo;
         this.tipo = tipo;
+        this.especialidad = especialidad;
     }
 
     public String getDepartamento() {
