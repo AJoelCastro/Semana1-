@@ -11,16 +11,18 @@ package entidades;
 public abstract class Persona {
     private String nombre;
     private String apellido;
-    private String Dni;
+    private String dni;
+    private String edad;
 
     public Persona() {
-        this("NN", "NA","ND");
+        this("NN", "NA","ND","SE");
     }
 
-    public Persona(String nombre, String apellido, String Dni) {
+    public Persona(String nombre, String apellido, String dni,String edad) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.Dni = Dni;
+        this.dni = dni;
+        this.edad = edad;
     }
 
     public void setNombre(String nombre) {
@@ -40,16 +42,24 @@ public abstract class Persona {
     }
     
     public void setDni(String Dni) {
-        this.Dni = Dni;
+        this.dni = dni;
     }
 
     public String getDni() {
-        return Dni;
+        return dni;
+    }
+
+    public String getEdad() {
+        return edad;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
     }
     
     @Override
     public String toString() {
         return getNombre() + " " + getApellido() + " " + 
-                getDni();
+                getDni() + " " + getEdad();
     }
 }
