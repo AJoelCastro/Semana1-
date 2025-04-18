@@ -3,10 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+
+import datos.*;
+import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import datos.ListaEstudiantes;
+
 /**
  *
  * @author USER
@@ -210,6 +214,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
+
+       //IfrmEstudiante ventana = new IfrmEstudiante();
+       ifrmDocente ventana = new ifrmDocente();
+       dspEscritorio.add(ventana);
+       ventana.setLocation(
+    (dspEscritorio.getWidth() - ventana.getWidth()) / 2,
+    (dspEscritorio.getHeight() - ventana.getHeight()) / 2
+);
+       ventana.setVisible(true);
+
         IfrmEstudiante ventana = new IfrmEstudiante();
         dspEscritorio.add(ventana);
         ventana.setLocation(
@@ -217,6 +231,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             (dspEscritorio.getHeight() - ventana.getHeight()) / 2
         );
         ventana.setVisible(true);
+
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
@@ -228,7 +243,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
         historial.setVisible(true);
     }//GEN-LAST:event_btnHistorialActionPerformed
-
+ 
     /**
      * @param args the command line arguments
      */
@@ -276,4 +291,5 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panContacto;
     private javax.swing.JPanel panForm;
     // End of variables declaration//GEN-END:variables
+
 }
