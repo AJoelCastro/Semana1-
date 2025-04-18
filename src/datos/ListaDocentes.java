@@ -28,4 +28,18 @@ public class ListaDocentes {
  
         return listaD;
     }
+    
+    public void guardarDocente(ArrayList<Docente> listaD) {
+        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("Registro Docente.txt"))) {
+            salida.writeObject(listaD);
+        }catch (IOException e){
+            System.out.println("Ha ocurrido un error al guardar: " + e.getMessage());
+        }
+    }
+    
+    public void añadirDocenteHistorial(Docente docente) {
+        ArrayList<Docente> listaD = new ArrayList<>();
+        listaD.add(docente);
+        guardarDocente(listaD);  
+    } 
 }
