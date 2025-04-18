@@ -4,11 +4,13 @@
  */
 package entidades;
 
+import java.io.*;
+
 /**
  *
  * @author Administrador
  */
-public class Docente extends Persona{
+public class Docente extends Persona implements Serializable{
     private String departamento;
     private String tipo;
     
