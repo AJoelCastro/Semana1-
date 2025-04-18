@@ -40,4 +40,21 @@ public class ListaEstudiantes {
             System.out.println("❌ Error al guardar: " + e.getMessage());
         }
     }
+    public boolean eliminarEstudiante(String codigo) {
+        ArrayList<Estudiante> lista = leerEstudiantes();
+        boolean encontrado = false;
+        String clave = codigo.trim();
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getCodigo().equalsIgnoreCase(clave)) {
+                lista.remove(i);
+                encontrado = true;
+                break;
+            }
+        }
+        if (encontrado) {
+            guardarEstudiantes(lista);
+        }
+        return encontrado;
+    }
+    
 }
