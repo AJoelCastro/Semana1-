@@ -4,6 +4,7 @@
  */
 package presentacion;
 import datos.*;
+import javax.swing.*;
 /**
  *
  * @author USER
@@ -91,7 +92,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-       IfrmEstudiante ventana = new IfrmEstudiante();
+       //IfrmEstudiante ventana = new IfrmEstudiante();
+       ifrmDocente ventana = new ifrmDocente();
        dspEscritorio.add(ventana);
        ventana.setLocation(
     (dspEscritorio.getWidth() - ventana.getWidth()) / 2,
@@ -109,7 +111,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 );
        historial.setVisible(true);
     }//GEN-LAST:event_btnHistorialActionPerformed
-
+ 
     /**
      * @param args the command line arguments
      */
@@ -150,4 +152,5 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistro;
     private javax.swing.JDesktopPane dspEscritorio;
     // End of variables declaration//GEN-END:variables
+
 }
