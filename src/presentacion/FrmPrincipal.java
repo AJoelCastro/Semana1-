@@ -246,13 +246,34 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
-        IfrmHistorialProfesor historial= new IfrmHistorialProfesor();
-        dspEscritorio.add(historial);
-        historial.setLocation(
-            (dspEscritorio.getWidth() - historial.getWidth()) / 2,
-            (dspEscritorio.getHeight() - historial.getHeight()) / 2
+        String[] opciones = {"Estudiante", "Maestro"};
+        int seleccion = JOptionPane.showOptionDialog(this,
+            "¿Qué historial se desea vizualizar?",
+            "Seleccionar tipo de usuario",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+
         );
-        historial.setVisible(true);
+        if(seleccion == 0){
+            IfrmHistorialRegistro historial= new IfrmHistorialRegistro();
+            dspEscritorio.add(historial);
+            historial.setLocation(
+                (dspEscritorio.getWidth() - historial.getWidth()) / 2,
+                (dspEscritorio.getHeight() - historial.getHeight()) / 2
+            );
+            historial.setVisible(true);
+        } else if(seleccion == 1){
+            IfrmHistorialProfesor historial= new IfrmHistorialProfesor();
+            dspEscritorio.add(historial);
+            historial.setLocation(
+                (dspEscritorio.getWidth() - historial.getWidth()) / 2,
+                (dspEscritorio.getHeight() - historial.getHeight()) / 2
+            );
+            historial.setVisible(true);
+        }
     }//GEN-LAST:event_btnHistorialActionPerformed
  
     /**
