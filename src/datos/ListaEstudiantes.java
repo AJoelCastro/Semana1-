@@ -11,6 +11,15 @@ import entidades.*;
  * @author USER
  */
 public class ListaEstudiantes {
+
+    
+    private final String archivo= "Estudiantes.txt";
+    
+    public void agregarEstudiante (Estudiante nuevo){
+        ArrayList <Estudiante> lista = leerEstudiantes();
+        lista.add(nuevo);
+        guardarEstudiantes(lista);
+    }
     
     public ArrayList<Estudiante> leerEstudiantes(){
         ArrayList<Estudiante> listaE = new ArrayList<>();
@@ -35,10 +44,30 @@ public class ListaEstudiantes {
             System.out.println("Ha ocurrido un error al guardar: " + e.getMessage());
         }
     }
+
     
      public void añadirEstudianteHistorial(Estudiante nuevo){
         ArrayList<Estudiante> listaE = leerEstudiantes();
         listaE.add(nuevo);
         guardarEstudiante(listaE);
     }
+
+    public boolean eliminarEstudiante(String codigo) {
+        ArrayList<Estudiante> lista = leerEstudiantes();
+        boolean encontrado = false;
+        String clave = codigo.trim();
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getCodigo().equalsIgnoreCase(clave)) {
+                lista.remove(i);
+                encontrado = true;
+                break;
+            }
+        }
+        if (encontrado) {
+            guardarEstudiantes(lista);
+        }
+        return encontrado;
+    }
+    
+
 }

@@ -28,7 +28,7 @@ public class ListaDocentes {
  
         return listaD;
     }
-    
+
     public void guardarDocente(ArrayList<Docente> listaD) {
         try(ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("Registro Docente.txt"))) {
             salida.writeObject(listaD);
@@ -42,4 +42,5 @@ public class ListaDocentes {
         listaD.add(docente);
         guardarDocente(listaD);  
     } 
+
 }
