@@ -192,7 +192,7 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
         return;
     }
     Estudiante nuevo = new Estudiante(nombre, codigo, escuela);
-    lista.agregarEstudiante(nuevo);
+    lista.añadirEstudianteHistorial(nuevo);
     limpiar();
     txtNombre.requestFocus();
     JOptionPane.showMessageDialog(this, "✅ Estudiante guardado correctamente.");
