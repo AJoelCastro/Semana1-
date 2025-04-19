@@ -152,11 +152,12 @@ public class IfrmHistorialProfesor extends javax.swing.JInternalFrame {
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
-        DefaultTableModel modelo;
-        modelo = ListaIngresosDocente.getContenido();
-        if(modelo != null){
+        ListaIngresosDocente lista = new ListaIngresosDocente();
+        DefaultTableModel modelo = lista.getContenido();
+
+        if (modelo != null) {
             tblHistorial.setModel(modelo);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No hay profesores registrados");
         }
     }//GEN-LAST:event_formInternalFrameOpened
