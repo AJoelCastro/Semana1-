@@ -105,10 +105,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         panForm.setLayout(panFormLayout);
         panFormLayout.setHorizontalGroup(
             panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
             .addGroup(panFormLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,8 +117,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(lblBienvenida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblSubtitulo)
+                .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSubtitulo)))
                 .addGap(111, 111, 111))
         );
         panFormLayout.setVerticalGroup(
@@ -133,7 +134,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addComponent(lblSubtitulo)
                 .addGap(18, 18, 18)
-                .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,11 +225,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
 );
        ventana.setVisible(true);
 
-        IfrmEstudiante ventana = new IfrmEstudiante();
-        dspEscritorio.add(ventana);
-        ventana.setLocation(
-            (dspEscritorio.getWidth() - ventana.getWidth()) / 2,
-            (dspEscritorio.getHeight() - ventana.getHeight()) / 2
+        IfrmEstudiante ventana1 = new IfrmEstudiante();
+        dspEscritorio.add(ventana1);
+        ventana1.setLocation(
+            (dspEscritorio.getWidth() - ventana1.getWidth()) / 2,
+            (dspEscritorio.getHeight() - ventana1.getHeight()) / 2
         );
         ventana.setVisible(true);
 
