@@ -53,6 +53,9 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         cmbDia = new javax.swing.JComboBox<>();
         cmbMes = new javax.swing.JComboBox<>();
         cmbAño = new javax.swing.JComboBox<>();
+        lblDia = new javax.swing.JLabel();
+        lblMes = new javax.swing.JLabel();
+        lblAño = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
 
@@ -101,17 +104,33 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         lblTipo.setForeground(new java.awt.Color(255, 255, 255));
         lblTipo.setText("Tipo");
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Nombrado", "Contratado" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombrado", "Contratado" }));
+        cmbTipo.setSelectedIndex(-1);
 
         lblFechaRegistro.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblFechaRegistro.setForeground(new java.awt.Color(255, 255, 255));
         lblFechaRegistro.setText("Fecha de Registro");
 
-        cmbDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<DIA>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cmbDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cmbDia.setSelectedIndex(-1);
 
-        cmbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<MES>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cmbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cmbMes.setSelectedIndex(-1);
 
-        cmbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<AÑO>", "2025", "2026", "2027", "2028" }));
+        cmbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2025", "2026", "2027", "2028" }));
+        cmbAño.setSelectedIndex(-1);
+
+        lblDia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDia.setForeground(new java.awt.Color(255, 255, 255));
+        lblDia.setText("DIA");
+
+        lblMes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMes.setForeground(new java.awt.Color(255, 255, 255));
+        lblMes.setText("MES");
+
+        lblAño.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAño.setForeground(new java.awt.Color(255, 255, 255));
+        lblAño.setText("AÑO");
 
         dpsDocente.setLayer(lblNombres, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpsDocente.setLayer(lblApellidos, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -133,6 +152,9 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         dpsDocente.setLayer(cmbDia, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpsDocente.setLayer(cmbMes, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpsDocente.setLayer(cmbAño, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpsDocente.setLayer(lblDia, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpsDocente.setLayer(lblMes, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpsDocente.setLayer(lblAño, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dpsDocenteLayout = new javax.swing.GroupLayout(dpsDocente);
         dpsDocente.setLayout(dpsDocenteLayout);
@@ -165,11 +187,19 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
                     .addGroup(dpsDocenteLayout.createSequentialGroup()
                         .addComponent(lblFechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dpsDocenteLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblDia)))
                         .addGap(18, 18, 18)
-                        .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMes))
                         .addGap(18, 18, 18)
-                        .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAño)
+                            .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         dpsDocenteLayout.setVerticalGroup(
@@ -213,7 +243,12 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
                     .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMes)
+                    .addComponent(lblAño)
+                    .addComponent(lblDia))
+                .addGap(18, 18, 18))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-.png"))); // NOI18N
@@ -232,13 +267,13 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(61, 61, 61)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addGap(55, 55, 55))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(dpsDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -249,12 +284,12 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
                 .addComponent(dpsDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                        .addGap(9, 9, 9)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(21, 21, 21)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,7 +300,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -287,8 +322,9 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         dia = cmbDia.getSelectedIndex();
         mes = cmbMes.getSelectedIndex();
         año = cmbAño.getSelectedIndex();
+        
         if (nombres.isEmpty() || codigo.isEmpty() || apellidos.isEmpty()|| dni.isEmpty()||departamento.isEmpty()
-                ||especialidad.isEmpty()||tipo.isEmpty()) {
+                ||especialidad.isEmpty()||tipo.isEmpty()|| cmbDia.getSelectedIndex()==-1 || cmbMes.getSelectedIndex()==-1 || cmbAño.getSelectedIndex()==-1) {
             JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
             return;
         }
@@ -313,11 +349,14 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblAño;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDepartamento;
+    private javax.swing.JLabel lblDia;
     private javax.swing.JLabel lblDni;
     private javax.swing.JLabel lblEspecialidad;
     private javax.swing.JLabel lblFechaRegistro;
+    private javax.swing.JLabel lblMes;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JTextField txtApellidos;
