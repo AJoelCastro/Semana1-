@@ -70,5 +70,27 @@ public class ListaIngresosProfesor {
 
     return eliminado;
 }
-
+    public static DefaultTableModel getContenido2() {
+            Ventas ventas;
+            DefaultTableModel modelo = new DefaultTableModel();
+            String dCliente;
+            String columnas[] = {"Código", "Marca", "Modelo", "Año de fabricación", "Precio total", "C/S Descuento"};
+            modelo.setColumnIdentifiers(columnas);
+            dCliente = getDniCliente();
+            for(int i=0; i<listaVentas.size(); i++){
+                if(listaVentas.get(i).getCliente().getNumeroDni().equals(dCliente)) {
+                    ventas = listaVentas.get(i);
+                    Object fila[] = new Object[columnas.length];
+                    fila[0] = ventas.getAutomovil().getCodigo();
+                    fila[1] = ventas.getAutomovil().getMarca();
+                    fila[2] = ventas.getAutomovil().getModelo();
+                    fila[3] = ventas.getAutomovil().getAñoDeFabricacion();
+                    fila[4] = ventas.getAutomovil().getPrecioTotal();
+                    boolean dcto = ventas.getAutomovil().isDcto();
+                    fila[5] = (dcto == true? "Con descuento del " + ventas.getAutomovil().getPctjeDcto() + " %":"Sin descuento");
+                    modelo.addRow(fila);
+                }
+            }
+            return modelo;
+        }
 }
