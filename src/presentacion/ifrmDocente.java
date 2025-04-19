@@ -51,7 +51,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
-        dpsDocente.setBackground(new java.awt.Color(0, 51, 51));
+        dpsDocente.setBackground(new java.awt.Color(11, 55, 97));
         dpsDocente.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         dpsDocente.setForeground(new java.awt.Color(204, 255, 255));
 
