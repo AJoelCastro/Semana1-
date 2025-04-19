@@ -123,7 +123,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         String codigo = txtCodigo.getText().trim();
-    
+
         if(codigo.isEmpty()){
             JOptionPane.showMessageDialog(
                 this,

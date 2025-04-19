@@ -44,6 +44,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         txtCodigo = new javax.swing.JTextField();
         cmbTipo = new javax.swing.JComboBox<>();
         btnRegistrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -89,13 +90,14 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Nombrado", "Contratado" }));
 
-        btnRegistrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\OneDrive\\Documentos\\III unt 2025-I\\POO\\imagenes\\imagenes\\save.gif")); // NOI18N
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-.png"))); // NOI18N
 
         dpsDocente.setLayer(lblNombres, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpsDocente.setLayer(lblApellidos, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -114,15 +116,21 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         dpsDocente.setLayer(txtCodigo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpsDocente.setLayer(cmbTipo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpsDocente.setLayer(btnRegistrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpsDocente.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dpsDocenteLayout = new javax.swing.GroupLayout(dpsDocente);
         dpsDocente.setLayout(dpsDocenteLayout);
         dpsDocenteLayout.setHorizontalGroup(
             dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dpsDocenteLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
                 .addGroup(dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dpsDocenteLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65))
+                    .addGroup(dpsDocenteLayout.createSequentialGroup()
                         .addGroup(dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,11 +150,8 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
                                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(dpsDocenteLayout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                            .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(25, Short.MAX_VALUE))))
         );
         dpsDocenteLayout.setVerticalGroup(
             dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,9 +188,14 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
                 .addGroup(dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(dpsDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dpsDocenteLayout.createSequentialGroup()
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dpsDocenteLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(37, 37, 37))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,6 +224,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JDesktopPane dpsDocente;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblCodigo;
