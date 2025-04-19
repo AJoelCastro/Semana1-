@@ -92,7 +92,8 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         lblTipo.setForeground(new java.awt.Color(255, 255, 255));
         lblTipo.setText("Tipo");
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Nombrado", "Contratado" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombrado", "Contratado" }));
+        cmbTipo.setSelectedIndex(-1);
 
         dpsDocente.setLayer(lblNombres, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpsDocente.setLayer(lblApellidos, javax.swing.JLayeredPane.DEFAULT_LAYER);
