@@ -28,8 +28,6 @@ public class IngresoDocente extends Persona implements Serializable {
         this.fechaIngreso = fechaIngreso;
     }
 
-
-    // Getters
     public String getDepartamento() {
             return departamento;
         }
