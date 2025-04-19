@@ -4,11 +4,11 @@
  */
 package presentacion;
 import datos.*;
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.border.Border;
 import datos.ListaEstudiantes;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,12 +33,15 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoTipo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new RoundedPanel();
         lblMensaje = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         btnEliminar = new FlatButton("Eliminar");
         lblLogo = new javax.swing.JLabel();
+        rbEstudiante = new javax.swing.JRadioButton();
+        rbDocente = new javax.swing.JRadioButton();
 
         setClosable(true);
 
@@ -47,7 +50,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(11, 55, 97));
 
         lblMensaje.setForeground(new java.awt.Color(255, 255, 255));
-        lblMensaje.setText("Ingrese el código de matrícula del estudiante a eliminar:");
+        lblMensaje.setText("Ingrese el código del estudiante o docente a eliminar:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -81,30 +84,50 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-.png"))); // NOI18N
 
+        grupoTipo.add(rbEstudiante);
+        rbEstudiante.setText("Estudiante");
+        rbEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbEstudianteActionPerformed(evt);
+            }
+        });
+
+        grupoTipo.add(rbDocente);
+        rbDocente.setText("Docente");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblLogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(rbEstudiante)
+                .addGap(60, 60, 60)
+                .addComponent(rbDocente)
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbEstudiante)
+                    .addComponent(rbDocente))
+                .addGap(9, 9, 9)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLogo)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,7 +147,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         String codigo = txtCodigo.getText().trim();
 
-        if(codigo.isEmpty()){
+        if (codigo.isEmpty()) {
             JOptionPane.showMessageDialog(
                 this,
                 "⚠️ Debe ingresar un código válido.",
@@ -133,34 +156,43 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
             );
             return;
         }
-        ListaEstudiantes lista = new ListaEstudiantes();
-        boolean ok = lista.eliminarEstudiante(codigo);
-        if(ok){
-            JOptionPane.showMessageDialog(
-                this,
-                "✅ Estudiante eliminado correctamente.",
-                "Éxito",
-                JOptionPane.INFORMATION_MESSAGE
-            );
-            txtCodigo.setText("");
-            txtCodigo.requestFocus();
-        }else{
-            JOptionPane.showMessageDialog(
-                this,
-                "❌ No se encontró ningún estudiante con ese código.",
-                "No encontrado",
-                JOptionPane.ERROR_MESSAGE
-            );
+
+        if (rbEstudiante.isSelected()) {
+            ListaEstudiantes lista = new ListaEstudiantes();
+            boolean ok = lista.eliminarEstudiante(codigo);
+            if (ok) {
+                JOptionPane.showMessageDialog(this, "✅ Estudiante eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "❌ No se encontró ningún estudiante con ese código.", "No encontrado", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (rbDocente.isSelected()) {
+            ListaDocentes lista = new ListaDocentes();
+            boolean ok = lista.eliminarDocente(codigo);
+            if (ok) {
+                JOptionPane.showMessageDialog(this, "✅ Docente eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "❌ No se encontró ningún docente con ese código.", "No encontrado", JOptionPane.ERROR_MESSAGE);
+            }
         }
+
+        txtCodigo.setText("");
+        txtCodigo.requestFocus();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void rbEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEstudianteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbEstudianteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
+    private javax.swing.ButtonGroup grupoTipo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMensaje;
+    private javax.swing.JRadioButton rbDocente;
+    private javax.swing.JRadioButton rbEstudiante;
     private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables
 }
