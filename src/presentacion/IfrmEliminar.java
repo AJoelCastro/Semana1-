@@ -167,7 +167,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
             }
         } else if (rbDocente.isSelected()) {
             ListaIngresosDocente lista = new ListaIngresosDocente();
-            boolean ok = lista.eliminarDocente(codigo);
+            boolean ok = lista.eliminarPorCodigo(codigo);
             if (ok) {
                 JOptionPane.showMessageDialog(this, "✅ Docente eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             } else {
