@@ -188,14 +188,14 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
     codigo= txtCod.getText();
     escuela= txtEscuela.getText();
      if (nombre.isEmpty() || codigo.isEmpty() || escuela.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
+        JOptionPane.showMessageDialog(this, "Complete todos los campos necesarios");
         return;
     }
     Estudiante nuevo = new Estudiante(nombre, codigo, escuela);
     lista.añadirEstudianteHistorial(nuevo);
     limpiar();
     txtNombre.requestFocus();
-    JOptionPane.showMessageDialog(this, "✅ Estudiante guardado correctamente.");
+    JOptionPane.showMessageDialog(this, "Se ha añadido añ estudiante correctamente.");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
