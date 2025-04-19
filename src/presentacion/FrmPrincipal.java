@@ -230,23 +230,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-
-
-       //IfrmEstudiante ventana = new IfrmEstudiante();
-       ifrmDocente ventana = new ifrmDocente();
-       dspEscritorio.add(ventana);
-       ventana.setLocation(
-    (dspEscritorio.getWidth() - ventana.getWidth()) / 2,
-    (dspEscritorio.getHeight() - ventana.getHeight()) / 2
-);
-       ventana.setVisible(true);
-
-        IfrmEstudiante ventana1 = new IfrmEstudiante();
-        dspEscritorio.add(ventana1);
-        ventana1.setLocation(
-            (dspEscritorio.getWidth() - ventana1.getWidth()) / 2,
-            (dspEscritorio.getHeight() - ventana1.getHeight()) / 2
-        );
         String[] opciones = {"Estudiante", "Maestro"};
         int seleccion = JOptionPane.showOptionDialog(this,
             "¿Qué tipo de registro deseas hacer?",
