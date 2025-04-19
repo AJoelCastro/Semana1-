@@ -42,10 +42,27 @@ public class Docente extends Persona implements Serializable{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
     
     @Override
     public String toString() {
         return "\n\t" + super.toString() + "Departamento: " + getDepartamento() + 
+                "Codigo: " + getCodigo() + "Especialidad: " + getEspecialidad() + 
                 "Tipo de Docente: " + getTipo();
     } 
     
