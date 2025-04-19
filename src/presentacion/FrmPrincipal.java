@@ -105,6 +105,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         panForm.setLayout(panFormLayout);
         panFormLayout.setHorizontalGroup(
             panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
+                .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSubtitulo)))
+                .addGap(111, 111, 111))
+
             .addGroup(panFormLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,6 +127,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(lblBienvenida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(50, Short.MAX_VALUE))
+
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
                 .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
@@ -125,6 +137,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblSubtitulo)))
                 .addGap(111, 111, 111))
+
         );
         panFormLayout.setVerticalGroup(
             panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,8 +148,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(lblSubtitulo)
                 .addGap(18, 18, 18)
                 .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
                     .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
@@ -156,7 +171,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panContactoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap())
+                .addGap(43, 43, 43))
         );
         panContactoLayout.setVerticalGroup(
             panContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +190,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             dspEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panContacto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dspEscritorioLayout.createSequentialGroup()
-                .addContainerGap(300, Short.MAX_VALUE)
+                .addGap(24, 300, Short.MAX_VALUE)
                 .addComponent(panForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(300, 300, 300))
         );
@@ -216,6 +231,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
 
+
        //IfrmEstudiante ventana = new IfrmEstudiante();
        ifrmDocente ventana = new ifrmDocente();
        dspEscritorio.add(ventana);
@@ -230,9 +246,35 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ventana1.setLocation(
             (dspEscritorio.getWidth() - ventana1.getWidth()) / 2,
             (dspEscritorio.getHeight() - ventana1.getHeight()) / 2
-        );
-        ventana.setVisible(true);
 
+        String[] opciones = {"Estudiante", "Maestro"};
+        int seleccion = JOptionPane.showOptionDialog(this,
+            "¿Qué tipo de registro deseas hacer?",
+            "Seleccionar tipo de usuario",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+
+        );
+        if(seleccion == 0){
+            IfrmEstudiante ventanaEst = new IfrmEstudiante();
+            dspEscritorio.add(ventanaEst);
+            ventanaEst.setLocation(
+                (dspEscritorio.getWidth() - ventanaEst.getWidth()) / 2,
+                (dspEscritorio.getHeight() - ventanaEst.getHeight()) / 2
+            );
+            ventanaEst.setVisible(true);
+        } else if(seleccion == 1){
+            ifrmDocente ventanaDoc = new ifrmDocente();
+            dspEscritorio.add(ventanaDoc);
+            ventanaDoc.setLocation(
+                (dspEscritorio.getWidth() - ventanaDoc.getWidth()) / 2,
+                (dspEscritorio.getHeight() - ventanaDoc.getHeight()) / 2
+            );
+            ventanaDoc.setVisible(true);
+        }
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
