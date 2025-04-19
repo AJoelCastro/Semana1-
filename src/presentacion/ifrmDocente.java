@@ -4,8 +4,8 @@
  */
 package presentacion;
 
-import datos.ListaIngresosProfesor;
-import entidades.IngresoProfesor;
+import datos.ListaIngresosDocente;
+import entidades.IngresoDocente;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
@@ -292,9 +292,9 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
             return;
         }
-        IngresoProfesor profesor = new IngresoProfesor( tipo,departamento, codigo,  especialidad,  nombres,  
+        IngresoDocente profesor = new IngresoDocente( tipo,departamento, codigo,  especialidad,  nombres,  
                 apellidos,  dni, edad, new GregorianCalendar(año,mes-1,dia));
-        ListaIngresosProfesor listaProfesor = new ListaIngresosProfesor();
+        ListaIngresosDocente listaProfesor = new ListaIngresosDocente();
         listaProfesor.agregarIngreso(profesor);
         JOptionPane.showMessageDialog(this, "Docente Registrado Correctamente");
         this.dispose();

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos;
-import entidades.IngresoProfesor;
+import entidades.IngresoDocente;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -13,22 +13,22 @@ import javax.swing.table.DefaultTableModel;
  * @author USUARIO
  */
 
-public class ListaIngresosProfesor {
-    private static ArrayList<IngresoProfesor> listaProfesor = new ArrayList<>();
+public class ListaIngresosDocente {
+    private static ArrayList<IngresoDocente> listaProfesor = new ArrayList<>();
     private final String archivo = "ingresos_profesores.txt";
 
-    public void agregarIngreso(IngresoProfesor ingreso) {
+    public void agregarIngreso(IngresoDocente ingreso) {
         listaProfesor.add(ingreso);
         guardarIngresos(listaProfesor);
     }
 
-    public ArrayList<IngresoProfesor> leerIngresos() {
-        ArrayList<IngresoProfesor> lista = new ArrayList<>();
+    public ArrayList<IngresoDocente> leerIngresos() {
+        ArrayList<IngresoDocente> lista = new ArrayList<>();
         File f = new File(archivo);
         if (!f.exists()) return lista;
 
         try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(f))) {
-            lista = (ArrayList<IngresoProfesor>) entrada.readObject();
+            lista = (ArrayList<IngresoDocente>) entrada.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("❌ Error al leer archivo: " + e.getMessage());
         }
@@ -36,7 +36,7 @@ public class ListaIngresosProfesor {
         return lista;
     }
     
-    public void guardarIngresos(ArrayList<IngresoProfesor> lista) {
+    public void guardarIngresos(ArrayList<IngresoDocente> lista) {
         try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(archivo))) {
             salida.writeObject(lista);
         } catch (IOException e) {
@@ -45,9 +45,9 @@ public class ListaIngresosProfesor {
     }
 
     
-    public ArrayList<IngresoProfesor> obtenerPorCodigo(String codigo) {
-    ArrayList<IngresoProfesor> resultados = new ArrayList<>();
-    for (IngresoProfesor ingreso : leerIngresos()) {
+    public ArrayList<IngresoDocente> obtenerPorCodigo(String codigo) {
+    ArrayList<IngresoDocente> resultados = new ArrayList<>();
+    for (IngresoDocente ingreso : leerIngresos()) {
         if (ingreso.getCodigo().equalsIgnoreCase(codigo)) {
             resultados.add(ingreso);
         }
@@ -55,7 +55,7 @@ public class ListaIngresosProfesor {
     return resultados;
     }
     public boolean eliminarPorCodigo(String codigo) {
-        ArrayList<IngresoProfesor> lista = leerIngresos();
+        ArrayList<IngresoDocente> lista = leerIngresos();
         boolean eliminado = false;
 
         for (int i = 0; i < lista.size(); i++) {
@@ -73,7 +73,7 @@ public class ListaIngresosProfesor {
         return eliminado;
     }
     public static DefaultTableModel getContenido() {
-            IngresoProfesor profesor;
+            IngresoDocente profesor;
             DefaultTableModel modelo = new DefaultTableModel();
             String columnas[] = {"Nombres","Apellidos", "DNI", "Edad", "Departamento", "Especialidad" ,"Codigo", "Tipo", "Fecha de Ingreso"};
             modelo.setColumnIdentifiers(columnas);

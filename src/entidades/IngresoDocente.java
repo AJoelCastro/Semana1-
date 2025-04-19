@@ -11,14 +11,14 @@ import java.util.GregorianCalendar;
  * @author USUARIO
  */
 
-public class IngresoProfesor extends Persona implements Serializable {
+public class IngresoDocente extends Persona implements Serializable {
     private String codigo;
     private String departamento;
     private String tipo;
     private String especialidad;
     private GregorianCalendar fechaIngreso;
 
-    public IngresoProfesor(String tipo,String departamento,String codigo, String especialidad, 
+    public IngresoDocente(String tipo,String departamento,String codigo, String especialidad, 
             String nombre, String apellido, String dni, String edad, GregorianCalendar fechaIngreso) {
         super(nombre, apellido, dni, edad);
         this.departamento = departamento;

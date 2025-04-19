@@ -166,7 +166,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "❌ No se encontró ningún estudiante con ese código.", "No encontrado", JOptionPane.ERROR_MESSAGE);
             }
         } else if (rbDocente.isSelected()) {
-            ListaDocentes lista = new ListaDocentes();
+            ListaIngresosDocente lista = new ListaIngresosDocente();
             boolean ok = lista.eliminarDocente(codigo);
             if (ok) {
                 JOptionPane.showMessageDialog(this, "✅ Docente eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package presentacion;
-import datos.ListaIngresosProfesor;
-import entidades.IngresoProfesor;
+import datos.ListaIngresosDocente;
+import entidades.IngresoDocente;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -153,7 +153,7 @@ public class IfrmHistorialProfesor extends javax.swing.JInternalFrame {
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         DefaultTableModel modelo;
-        modelo = ListaIngresosProfesor.getContenido();
+        modelo = ListaIngresosDocente.getContenido();
         if(modelo != null){
             tblHistorial.setModel(modelo);
         }else{
