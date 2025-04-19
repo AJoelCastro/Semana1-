@@ -14,30 +14,31 @@ import javax.swing.table.DefaultTableModel;
  */
 
 public class ListaIngresosDocente {
-    private static ArrayList<IngresoDocente> listaProfesor = new ArrayList<>();
-    private final String archivo = "ingresos_profesores.txt";
 
     public void agregarIngreso(IngresoDocente ingreso) {
-        listaProfesor.add(ingreso);
-        guardarIngresos(listaProfesor);
+        ArrayList <IngresoDocente> lista = leerIngresos();
+        lista.add(ingreso);
+        guardarIngresos(lista);
     }
 
     public ArrayList<IngresoDocente> leerIngresos() {
-        ArrayList<IngresoDocente> lista = new ArrayList<>();
-        File f = new File(archivo);
-        if (!f.exists()) return lista;
-
-        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(f))) {
-            lista = (ArrayList<IngresoDocente>) entrada.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("❌ Error al leer archivo: " + e.getMessage());
+        ArrayList<IngresoDocente> listaD = new ArrayList<>();
+        File f = new File("Registro Docente.txt");
+        if(!f.exists()) 
+            return listaD;
+        try(ObjectInputStream ingreso = new ObjectInputStream(new FileInputStream("Registro Docente.txt"))) {
+            listaD = (ArrayList<IngresoDocente>)ingreso.readObject();
+        }catch(IOException e) {
+            System.out.println("Ha ocurrido un error en la lectura: " + e.getMessage());
+        }catch(ClassNotFoundException e) {
+            System.out.println("Ha ocurrido un error en la lectura: " + e.getMessage());
         }
 
-        return lista;
+        return listaD;
     }
     
     public void guardarIngresos(ArrayList<IngresoDocente> lista) {
-        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(archivo))) {
+        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("Registro Docente.txt"))) {
             salida.writeObject(lista);
         } catch (IOException e) {
             System.out.println("❌ Error al guardar archivo: " + e.getMessage());
@@ -72,25 +73,26 @@ public class ListaIngresosDocente {
 
         return eliminado;
     }
-    public static DefaultTableModel getContenido() {
-            IngresoDocente profesor;
-            DefaultTableModel modelo = new DefaultTableModel();
-            String columnas[] = {"Nombres","Apellidos", "DNI", "Edad", "Departamento", "Especialidad" ,"Codigo", "Tipo", "Fecha de Ingreso"};
-            modelo.setColumnIdentifiers(columnas);
-            for(int i=0; i<listaProfesor.size(); i++){
-                profesor = listaProfesor.get(i);
-                Object fila[] = new Object[columnas.length];
-                fila[0] = profesor.getNombre();
-                fila[1] = profesor.getApellido();
-                fila[2] = profesor.getDni();
-                fila[3] = profesor.getEdad();
-                fila[4] = profesor.getDepartamento();
-                fila[5] = profesor.getEspecialidad();
-                fila[6] = profesor.getCodigo();
-                fila[7] = profesor.getTipo();
-                fila[8] = profesor.getFechaIngresoCorta();
-                modelo.addRow(fila);
-            }
-            return modelo;
+    public DefaultTableModel getContenido() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] columnas = {"Nombres", "Apellidos", "DNI", "Edad", "Departamento", "Especialidad", "Codigo", "Tipo", "Fecha de Ingreso"};
+        modelo.setColumnIdentifiers(columnas);
+
+        ArrayList<IngresoDocente> lista = leerIngresos();
+        for (IngresoDocente profesor : lista) {
+            Object[] fila = new Object[columnas.length];
+            fila[0] = profesor.getNombre();
+            fila[1] = profesor.getApellido();
+            fila[2] = profesor.getDni();
+            fila[3] = profesor.getEdad();
+            fila[4] = profesor.getDepartamento();
+            fila[5] = profesor.getEspecialidad();
+            fila[6] = profesor.getCodigo();
+            fila[7] = profesor.getTipo();
+            fila[8] = profesor.getFechaIngresoCorta();
+            modelo.addRow(fila);
         }
+
+        return modelo;
+    }
 }
