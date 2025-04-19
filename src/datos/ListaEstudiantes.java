@@ -37,7 +37,7 @@ public class ListaEstudiantes {
         return listaE;
     }
     
-    public void guardarEstudiante(ArrayList<Estudiante> listaE){
+    public void guardarEstudiantes(ArrayList<Estudiante> listaE){
         try(ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("Registro Estudiante.txt"))) {
             salida.writeObject(listaE);
         }catch(IOException e) {
@@ -49,7 +49,7 @@ public class ListaEstudiantes {
      public void añadirEstudianteHistorial(Estudiante nuevo){
         ArrayList<Estudiante> listaE = leerEstudiantes();
         listaE.add(nuevo);
-        guardarEstudiante(listaE);
+        guardarEstudiantes(listaE);
     }
 
     public boolean eliminarEstudiante(String codigo) {
