@@ -16,7 +16,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
     public ifrmDocente() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -234,8 +234,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
-        //ingreso de datos
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
 
