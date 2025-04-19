@@ -296,6 +296,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
                 apellidos,  dni, edad, new GregorianCalendar(año,mes-1,dia));
         ListaIngresosDocente listaProfesor = new ListaIngresosDocente();
         listaProfesor.agregarIngreso(profesor);
+        
         JOptionPane.showMessageDialog(this, "Docente Registrado Correctamente");
         this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed
