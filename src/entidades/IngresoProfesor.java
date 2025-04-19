@@ -25,6 +25,7 @@ public class IngresoProfesor extends Persona implements Serializable {
         this.codigo = codigo;
         this.tipo = tipo;
         this.especialidad = especialidad;
+        this.fechaIngreso = fechaIngreso;
     }
 
 
