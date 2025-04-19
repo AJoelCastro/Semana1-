@@ -4,6 +4,8 @@
  */
 package presentacion;
 import datos.*;
+import presentacion.IfrmHistorialProfesor;
+
 /**
  *
  * @author USER
@@ -29,6 +31,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         dspEscritorio = new javax.swing.JDesktopPane();
         btnRegistro = new javax.swing.JButton();
         btnHistorial = new javax.swing.JButton();
+        btnHistorialProfesor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,8 +49,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnHistorialProfesor.setText("Historial de Profesores");
+        btnHistorialProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistorialProfesorActionPerformed(evt);
+            }
+        });
+
         dspEscritorio.setLayer(btnRegistro, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dspEscritorio.setLayer(btnHistorial, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dspEscritorio.setLayer(btnHistorialProfesor, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dspEscritorioLayout = new javax.swing.GroupLayout(dspEscritorio);
         dspEscritorio.setLayout(dspEscritorioLayout);
@@ -58,7 +69,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(btnRegistro)
                 .addGap(18, 18, 18)
                 .addComponent(btnHistorial)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnHistorialProfesor)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dspEscritorioLayout.setVerticalGroup(
             dspEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,7 +79,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(dspEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistro)
-                    .addComponent(btnHistorial))
+                    .addComponent(btnHistorial)
+                    .addComponent(btnHistorialProfesor))
                 .addContainerGap(259, Short.MAX_VALUE))
         );
 
@@ -110,6 +124,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
        historial.setVisible(true);
     }//GEN-LAST:event_btnHistorialActionPerformed
 
+    private void btnHistorialProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialProfesorActionPerformed
+                                                   
+    IfrmHistorialProfesor historialProfesor = new IfrmHistorialProfesor();
+    dspEscritorio.add(historialProfesor);
+    historialProfesor.setLocation(
+        (dspEscritorio.getWidth() - historialProfesor.getWidth()) / 2,
+        (dspEscritorio.getHeight() - historialProfesor.getHeight()) / 2
+    );
+    historialProfesor.setVisible(true);
+
+
+    // TODO add your handling code here:
+    }//GEN-LAST:event_btnHistorialProfesorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -147,6 +175,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHistorial;
+    private javax.swing.JButton btnHistorialProfesor;
     private javax.swing.JButton btnRegistro;
     private javax.swing.JDesktopPane dspEscritorio;
     // End of variables declaration//GEN-END:variables
