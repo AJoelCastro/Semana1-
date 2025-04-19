@@ -246,7 +246,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ventana1.setLocation(
             (dspEscritorio.getWidth() - ventana1.getWidth()) / 2,
             (dspEscritorio.getHeight() - ventana1.getHeight()) / 2
-
+        );
         String[] opciones = {"Estudiante", "Maestro"};
         int seleccion = JOptionPane.showOptionDialog(this,
             "¿Qué tipo de registro deseas hacer?",
