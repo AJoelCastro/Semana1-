@@ -309,8 +309,9 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
         //ingreso de datos
+        Object tipe;
         String nombres, apellidos, dni, edad, codigo, departamento, tipo, especialidad;
-        int dia, mes, año;
+        int dia, mes, año, tipoInt;
         nombres= txtNombres.getText();
         apellidos = txtApellidos.getText();
         dni = txtDni.getText();
@@ -318,15 +319,20 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         departamento = txtDepartamento.getText();
         especialidad = txtEspecialidad.getText();
         codigo = txtCodigo.getText();
-        tipo = cmbTipo.getSelectedItem().toString();
+        tipoInt = cmbTipo.getSelectedIndex();
+        tipe= cmbTipo.getSelectedItem();
         dia = cmbDia.getSelectedIndex();
         mes = cmbMes.getSelectedIndex();
         año = cmbAño.getSelectedIndex();
         
         if (nombres.isEmpty() || codigo.isEmpty() || apellidos.isEmpty()|| dni.isEmpty()||departamento.isEmpty()
-                ||especialidad.isEmpty()||tipo.isEmpty()|| cmbDia.getSelectedIndex()==-1 || cmbMes.getSelectedIndex()==-1 || cmbAño.getSelectedIndex()==-1) {
+                ||especialidad.isEmpty() || cmbDia.getSelectedIndex()==-1 || cmbMes.getSelectedIndex()==-1 
+                || cmbAño.getSelectedIndex()==-1 || tipe==null ) {
             JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
             return;
+        }
+        else{
+            tipo = tipe.toString();
         }
         IngresoDocente profesor = new IngresoDocente( tipo,departamento, codigo,  especialidad,  nombres,  
                 apellidos,  dni, edad, new GregorianCalendar(año,mes-1,dia));
