@@ -41,6 +41,23 @@ public class ListaDocentes {
         ArrayList<Docente> listaD = new ArrayList<>();
         listaD.add(docente);
         guardarDocente(listaD);  
-    } 
+    }
+    
+     public boolean eliminarDocente(String codigo) {
+        ArrayList<Docente> listaD = leerDocentes();
+        boolean encontrado = false;
+        String clave = codigo.trim();
+        for (int i = 0; i < listaD.size(); i++) {
+            if (listaD.get(i).getCodigo().equalsIgnoreCase(clave)) {
+                listaD.remove(i);
+                encontrado = true;
+                break;
+            }
+        }
+        if (encontrado) {
+            guardarDocente(listaD);
+        }
+        return encontrado;
+    }
 
 }
