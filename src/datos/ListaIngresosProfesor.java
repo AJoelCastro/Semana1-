@@ -6,18 +6,20 @@ package datos;
 import entidades.IngresoProfesor;
 import java.io.*;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USUARIO
  */
 
 public class ListaIngresosProfesor {
+    private static ArrayList<IngresoProfesor> listaProfesor = new ArrayList<>();
     private final String archivo = "ingresos_profesores.txt";
 
     public void agregarIngreso(IngresoProfesor ingreso) {
-        ArrayList<IngresoProfesor> lista = leerIngresos();
-        lista.add(ingreso);
-        guardarIngresos(lista);
+        listaProfesor.add(ingreso);
+        guardarIngresos(listaProfesor);
     }
 
     public ArrayList<IngresoProfesor> leerIngresos() {
@@ -53,43 +55,41 @@ public class ListaIngresosProfesor {
     return resultados;
     }
     public boolean eliminarPorCodigo(String codigo) {
-    ArrayList<IngresoProfesor> lista = leerIngresos();
-    boolean eliminado = false;
+        ArrayList<IngresoProfesor> lista = leerIngresos();
+        boolean eliminado = false;
 
-    for (int i = 0; i < lista.size(); i++) {
-        if (lista.get(i).getCodigo().equalsIgnoreCase(codigo)) {
-            lista.remove(i);
-            eliminado = true;
-            break;
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+                lista.remove(i);
+                eliminado = true;
+                break;
+            }
         }
-    }
 
-    if (eliminado) {
-        guardarIngresos(lista);
-    }
+        if (eliminado) {
+            guardarIngresos(lista);
+        }
 
-    return eliminado;
-}
-    public static DefaultTableModel getContenido2() {
-            Ventas ventas;
+        return eliminado;
+    }
+    public static DefaultTableModel getContenido() {
+            IngresoProfesor profesor;
             DefaultTableModel modelo = new DefaultTableModel();
-            String dCliente;
-            String columnas[] = {"Código", "Marca", "Modelo", "Año de fabricación", "Precio total", "C/S Descuento"};
+            String columnas[] = {"Nombres","Apellidos", "DNI", "Edad", "Departamento", "Especialidad" ,"Codigo", "Tipo", "Fecha de Ingreso"};
             modelo.setColumnIdentifiers(columnas);
-            dCliente = getDniCliente();
-            for(int i=0; i<listaVentas.size(); i++){
-                if(listaVentas.get(i).getCliente().getNumeroDni().equals(dCliente)) {
-                    ventas = listaVentas.get(i);
-                    Object fila[] = new Object[columnas.length];
-                    fila[0] = ventas.getAutomovil().getCodigo();
-                    fila[1] = ventas.getAutomovil().getMarca();
-                    fila[2] = ventas.getAutomovil().getModelo();
-                    fila[3] = ventas.getAutomovil().getAñoDeFabricacion();
-                    fila[4] = ventas.getAutomovil().getPrecioTotal();
-                    boolean dcto = ventas.getAutomovil().isDcto();
-                    fila[5] = (dcto == true? "Con descuento del " + ventas.getAutomovil().getPctjeDcto() + " %":"Sin descuento");
-                    modelo.addRow(fila);
-                }
+            for(int i=0; i<listaProfesor.size(); i++){
+                profesor = listaProfesor.get(i);
+                Object fila[] = new Object[columnas.length];
+                fila[0] = profesor.getNombre();
+                fila[1] = profesor.getApellido();
+                fila[2] = profesor.getDni();
+                fila[3] = profesor.getEdad();
+                fila[4] = profesor.getDepartamento();
+                fila[5] = profesor.getEspecialidad();
+                fila[6] = profesor.getCodigo();
+                fila[7] = profesor.getTipo();
+                fila[8] = profesor.getFechaIngresoCorta();
+                modelo.addRow(fila);
             }
             return modelo;
         }

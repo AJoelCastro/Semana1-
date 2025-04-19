@@ -4,69 +4,81 @@
  */
 package entidades;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 /**
  *
  * @author USUARIO
  */
 
-public class IngresoProfesor implements Serializable {
-    private final String nombre;
-    private final String dni;
-    private final String codigo;
-    private final int edad;
-    private final String especialidad;
-    private final String fechaIngreso;
-    private final String horaIngreso;
+public class IngresoProfesor extends Persona implements Serializable {
+    private String codigo;
+    private String departamento;
+    private String tipo;
+    private String especialidad;
+    private GregorianCalendar fechaIngreso;
 
-    public IngresoProfesor(String nombre, String dni, String codigo, int edad, String especialidad, String fechaIngreso, String horaIngreso) {
-        this.nombre = nombre;
-        this.dni = dni;
+    public IngresoProfesor(String tipo,String departamento,String codigo, String especialidad, 
+            String nombre, String apellido, String dni, String edad, GregorianCalendar fechaIngreso) {
+        super(nombre, apellido, dni, edad);
+        this.departamento = departamento;
         this.codigo = codigo;
-        this.edad = edad;
+        this.tipo = tipo;
         this.especialidad = especialidad;
-        this.fechaIngreso = fechaIngreso;
-        this.horaIngreso = horaIngreso;
     }
+
 
     // Getters
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDni() {
-        return dni;
-    }
+    public String getDepartamento() {
+            return departamento;
+        }
 
     public String getCodigo() {
         return codigo;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getTipo() {
+        return tipo;
     }
-
+    
     public String getEspecialidad() {
         return especialidad;
     }
 
-    public String getFechaIngreso() {
-        return fechaIngreso;
+    public String getFechaIngresoCorta() {
+        int dia, mes, año;
+        dia = fechaIngreso.get(Calendar.DAY_OF_MONTH);
+        mes = fechaIngreso.get(Calendar.MONTH)+1;
+        año = fechaIngreso.get(Calendar.YEAR);
+        return (dia<=9?"0"+dia:dia) + "/" + (mes<=9?"0"+mes:mes) + "/" + año;
     }
 
-    public String getHoraIngreso() {
-        return horaIngreso;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public void setFechaIngreso(int dia, int mes, int año) {
+        fechaIngreso = new GregorianCalendar(año, mes-1, dia);
+    }
+    
     @Override
     public String toString() {
         return "IngresoProfesor{" +
-                "nombre='" + nombre + '\'' +
-                ", dni='" + dni + '\'' +
                 ", codigo='" + codigo + '\'' +
-                ", edad=" + edad +
                 ", especialidad='" + especialidad + '\'' +
                 ", fechaIngreso='" + fechaIngreso + '\'' +
-                ", horaIngreso='" + horaIngreso + '\'' +
                 '}';
     }
 }

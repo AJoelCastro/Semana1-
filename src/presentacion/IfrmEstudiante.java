@@ -26,8 +26,8 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
     }
     
     public ListaEstudiantes getLista() {
-    return lista;
-}
+        return lista;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
