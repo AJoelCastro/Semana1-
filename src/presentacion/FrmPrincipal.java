@@ -10,6 +10,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import datos.ListaEstudiantes;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
 
 /**
  *
@@ -22,9 +26,68 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
-        this.lista = new ListaEstudiantes();
+        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        
+        dspEscritorio.remove(panForm);
+        dspEscritorio.remove(panContacto);
+        
+        dspEscritorio.setLayout(null);
+        
+        panContacto.setSize(
+            dspEscritorio.getWidth(),
+            panContacto.getPreferredSize().height
+        );
+        panForm.setSize(342, 639);
+        
+        panContacto.setLayout(null);
+        
+        jLabel2.setSize(jLabel2.getPreferredSize());
+        anclarLabel();
+        panContacto.setLocation(0, 0);
+        centrarPanel(panForm);
+        
+        dspEscritorio.add(panContacto);
+        dspEscritorio.add(panForm);
+        
+        setLocationRelativeTo(null);
+        
+        dspEscritorio.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentResized(java.awt.event.ComponentEvent e) {
+                // A) Estiramos panContacto al ancho completo
+                panContacto.setSize(
+                    dspEscritorio.getWidth(),
+                    panContacto.getHeight()
+                );
+                anclarLabel();
+                centrarPanel(panForm);
+            }
+        });
+        dspEscritorio.addContainerListener(new java.awt.event.ContainerAdapter() {
+            @Override
+            public void componentAdded(java.awt.event.ContainerEvent e) {
+                centrarPanel(panForm);
+            }
+        });
+        
     }
-    
+    private void anclarLabel() {
+        int margen = 10;
+        int x = panContacto.getWidth() - jLabel2.getWidth() - margen;
+        int y = margen;
+        jLabel2.setLocation(x, y);
+    }
+    private void centrarPanel(JPanel panel) {
+        int x = (dspEscritorio.getWidth() - panel.getWidth()) / 2;
+        int y = (dspEscritorio.getHeight() - panel.getHeight()) / 2;
+        panel.setLocation(x, y);
+    }
+    private void centrarLabel(JLabel label) {
+        int x = (dspEscritorio.getWidth() - label.getWidth()) / 2;
+        int y = (dspEscritorio.getHeight() - label.getHeight()) / 2;
+        label.setLocation(x, y);
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,107 +105,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
 
         };
-        panForm = new RoundedPanel();
-        lblSubtitulo = new javax.swing.JLabel();
-        lblBienvenida = new javax.swing.JLabel();
-        btnRegistro = new FlatButton("Registro");
-        btnHistorial = new FlatButton("Eliminar");
-        btnEliminar = new FlatButton("Historial");
-        lblLogo = new javax.swing.JLabel();
         panContacto = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        panForm = new RoundedPanel();
+        lblLogo = new javax.swing.JLabel();
+        btnHistorial = new FlatButton("Eliminar");
+        btnRegistro = new FlatButton("Registro");
+        btnEliminar = new FlatButton("Historial");
+        lblSubtitulo = new javax.swing.JLabel();
+        lblBienvenida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         dspEscritorio.setBackground(new java.awt.Color(11, 55, 97));
-
-        panForm.setBackground(new java.awt.Color(255, 255, 255));
-        panForm.setForeground(new java.awt.Color(255, 255, 255));
-
-        lblSubtitulo.setBackground(new java.awt.Color(255, 255, 255));
-        lblSubtitulo.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
-        lblSubtitulo.setText("Control de Registros");
-
-        lblBienvenida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bienvenida.png"))); // NOI18N
-
-        btnRegistro.setBackground(new java.awt.Color(11, 55, 97));
-        btnRegistro.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
-        btnRegistro.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistro.setText("Registrar");
-        btnRegistro.setToolTipText("");
-        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistroActionPerformed(evt);
-            }
-        });
-
-        btnHistorial.setBackground(new java.awt.Color(11, 55, 97));
-        btnHistorial.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
-        btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
-        btnHistorial.setText("Historial");
-        btnHistorial.setPreferredSize(new java.awt.Dimension(79, 23));
-        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHistorialActionPerformed(evt);
-            }
-        });
-
-        btnEliminar.setBackground(new java.awt.Color(11, 55, 97));
-        btnEliminar.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setPreferredSize(new java.awt.Dimension(79, 23));
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-unt.png"))); // NOI18N
-
-        javax.swing.GroupLayout panFormLayout = new javax.swing.GroupLayout(panForm);
-        panForm.setLayout(panFormLayout);
-        panFormLayout.setHorizontalGroup(
-            panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
-                .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panFormLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblSubtitulo)))
-                .addGap(111, 111, 111))
-            .addGroup(panFormLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLogo)
-                    .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(panFormLayout.createSequentialGroup()
-                            .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(lblBienvenida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        panFormLayout.setVerticalGroup(
-            panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panFormLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(lblBienvenida)
-                .addGap(57, 57, 57)
-                .addComponent(lblSubtitulo)
-                .addGap(18, 18, 18)
-                .addGroup(panFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(lblLogo)
-                .addGap(120, 120, 120))
-        );
 
         panContacto.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -156,7 +131,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panContactoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(43, 43, 43))
+                .addContainerGap())
         );
         panContactoLayout.setVerticalGroup(
             panContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,39 +141,94 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        dspEscritorio.setLayer(panForm, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panForm.setBackground(new java.awt.Color(255, 255, 255));
+        panForm.setPreferredSize(new java.awt.Dimension(342, 639));
+        panForm.setLayout(null);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-unt.png"))); // NOI18N
+        panForm.add(lblLogo);
+        lblLogo.setBounds(50, 410, 242, 116);
+
+        btnHistorial.setBackground(new java.awt.Color(11, 55, 97));
+        btnHistorial.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
+        btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
+        btnHistorial.setText("Historial");
+        btnHistorial.setPreferredSize(new java.awt.Dimension(79, 23));
+        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistorialActionPerformed(evt);
+            }
+        });
+        panForm.add(btnHistorial);
+        btnHistorial.setBounds(120, 300, 115, 37);
+
+        btnRegistro.setBackground(new java.awt.Color(11, 55, 97));
+        btnRegistro.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
+        btnRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistro.setText("Registrar");
+        btnRegistro.setToolTipText("");
+        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroActionPerformed(evt);
+            }
+        });
+        panForm.add(btnRegistro);
+        btnRegistro.setBounds(50, 260, 115, 37);
+
+        btnEliminar.setBackground(new java.awt.Color(11, 55, 97));
+        btnEliminar.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setPreferredSize(new java.awt.Dimension(79, 23));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        panForm.add(btnEliminar);
+        btnEliminar.setBounds(180, 260, 115, 37);
+
+        lblSubtitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblSubtitulo.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
+        lblSubtitulo.setText("Control de Registros");
+        panForm.add(lblSubtitulo);
+        lblSubtitulo.setBounds(110, 230, 121, 16);
+
+        lblBienvenida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bienvenida.png"))); // NOI18N
+        panForm.add(lblBienvenida);
+        lblBienvenida.setBounds(50, 40, 242, 124);
+
         dspEscritorio.setLayer(panContacto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dspEscritorio.setLayer(panForm, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dspEscritorioLayout = new javax.swing.GroupLayout(dspEscritorio);
         dspEscritorio.setLayout(dspEscritorioLayout);
         dspEscritorioLayout.setHorizontalGroup(
             dspEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panContacto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dspEscritorioLayout.createSequentialGroup()
-                .addGap(24, 300, Short.MAX_VALUE)
+            .addGroup(dspEscritorioLayout.createSequentialGroup()
+                .addGap(400, 400, 400)
                 .addComponent(panForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(300, 300, 300))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
         dspEscritorioLayout.setVerticalGroup(
             dspEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dspEscritorioLayout.createSequentialGroup()
                 .addComponent(panContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(60, 60, 60)
                 .addComponent(panForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dspEscritorio)
+            .addComponent(dspEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(dspEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(dspEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
