@@ -33,75 +33,76 @@ public class FrmPrincipal extends javax.swing.JFrame {
         initComponents();
         setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH); // Maximiza la ventana
         
+
         // Configura y organiza manualmente los paneles dentro del escritorio
-        dspEscritorio.remove(panForm);
-        dspEscritorio.remove(panContacto);
+        dpsEscritorio.remove(panForm);
+        dpsEscritorio.remove(panContacto);
         
-        dspEscritorio.setLayout(null);
+        dpsEscritorio.setLayout(null);
         
         // Ajusta tamaño de los paneles
         panContacto.setSize(
-            dspEscritorio.getWidth(),
+            dpsEscritorio.getWidth(),
             panContacto.getPreferredSize().height
         );
         panForm.setSize(342, 639);
         
         panContacto.setLayout(null);
         
-        jLabel2.setSize(jLabel2.getPreferredSize());
-        anclarLabel();
+        lblContacto.setSize(lblContacto.getPreferredSize());
+        anclarContacto();
         panContacto.setLocation(0, 0);
         centrarPanel(panForm); // Centra el formulario
         
-        dspEscritorio.add(panContacto);
-        dspEscritorio.add(panForm);
+        dpsEscritorio.add(panContacto);
+        dpsEscritorio.add(panForm);
         
         setLocationRelativeTo(null); // Centra la ventana principal
         
+
         // Listeners para redimensionar automáticamente paneles
-        dspEscritorio.addComponentListener(new java.awt.event.ComponentAdapter() {
+
+        dpsEscritorio.addComponentListener(new java.awt.event.ComponentAdapter() {
+
             @Override
             public void componentResized(java.awt.event.ComponentEvent e) {
-                // A) Estiramos panContacto al ancho completo
                 panContacto.setSize(
-                    dspEscritorio.getWidth(),
+                    dpsEscritorio.getWidth(),
                     panContacto.getHeight()
                 );
-                anclarLabel();
+                anclarContacto();
                 centrarPanel(panForm);
             }
         });
-        dspEscritorio.addContainerListener(new java.awt.event.ContainerAdapter() {
+        dpsEscritorio.addContainerListener(new java.awt.event.ContainerAdapter() {
             @Override
             public void componentAdded(java.awt.event.ContainerEvent e) {
                 centrarPanel(panForm);
             }
         });
         
+        
     }
-    
+ 
     /**
      * Posiciona el jLabel2 (texto de contacto) en la esquina superior derecha del panel de contacto.
      */
-    private void anclarLabel() {
+
+    private void anclarContacto() {
+
         int margen = 10;
-        int x = panContacto.getWidth() - jLabel2.getWidth() - margen;
+        int x = panContacto.getWidth() - lblContacto.getWidth() - margen;
         int y = margen;
-        jLabel2.setLocation(x, y);
+        lblContacto.setLocation(x, y);
     }
     
     /**
      * Centra un panel en el escritorio
      */
     private void centrarPanel(JPanel panel) {
-        int x = (dspEscritorio.getWidth() - panel.getWidth()) / 2;
-        int y = (dspEscritorio.getHeight() - panel.getHeight()) / 2;
+        int x = (dpsEscritorio.getWidth() - panel.getWidth()) / 2;
+        int y = (dpsEscritorio.getHeight() - panel.getHeight()) / 2;
         panel.setLocation(x, y);
-    }
-    private void centrarLabel(JLabel label) {
-        int x = (dspEscritorio.getWidth() - label.getWidth()) / 2;
-        int y = (dspEscritorio.getHeight() - label.getHeight()) / 2;
-        label.setLocation(x, y);
     }
      
     /**
@@ -115,14 +116,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/fondo.png"));
         Image image = icon.getImage();
-        dspEscritorio = new javax.swing.JDesktopPane(){
+        dpsEscritorio = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
                 g.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
 
         };
         panContacto = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblContacto = new javax.swing.JLabel();
         panForm = new RoundedPanel();
         lblLogo = new javax.swing.JLabel();
         btnHistorial = new FlatButton("Eliminar");
@@ -133,12 +134,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        dspEscritorio.setBackground(new java.awt.Color(11, 55, 97));
+        dpsEscritorio.setBackground(new java.awt.Color(11, 55, 97));
 
         panContacto.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Central Telefonica: +51 (044) 209020");
+        lblContacto.setForeground(new java.awt.Color(255, 255, 255));
+        lblContacto.setText("Central Telefonica: +51 (044) 209020");
 
         javax.swing.GroupLayout panContactoLayout = new javax.swing.GroupLayout(panContacto);
         panContacto.setLayout(panContactoLayout);
@@ -146,14 +147,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
             panContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panContactoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(lblContacto)
                 .addContainerGap())
         );
         panContactoLayout.setVerticalGroup(
             panContactoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panContactoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblContacto)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -214,22 +215,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         panForm.add(lblBienvenida);
         lblBienvenida.setBounds(50, 40, 242, 124);
 
-        dspEscritorio.setLayer(panContacto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dspEscritorio.setLayer(panForm, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpsEscritorio.setLayer(panContacto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpsEscritorio.setLayer(panForm, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout dspEscritorioLayout = new javax.swing.GroupLayout(dspEscritorio);
-        dspEscritorio.setLayout(dspEscritorioLayout);
-        dspEscritorioLayout.setHorizontalGroup(
-            dspEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout dpsEscritorioLayout = new javax.swing.GroupLayout(dpsEscritorio);
+        dpsEscritorio.setLayout(dpsEscritorioLayout);
+        dpsEscritorioLayout.setHorizontalGroup(
+            dpsEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panContacto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(dspEscritorioLayout.createSequentialGroup()
+            .addGroup(dpsEscritorioLayout.createSequentialGroup()
                 .addGap(400, 400, 400)
                 .addComponent(panForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(400, Short.MAX_VALUE))
         );
-        dspEscritorioLayout.setVerticalGroup(
-            dspEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dspEscritorioLayout.createSequentialGroup()
+        dpsEscritorioLayout.setVerticalGroup(
+            dpsEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dpsEscritorioLayout.createSequentialGroup()
                 .addComponent(panContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(panForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,11 +241,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dspEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dpsEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dspEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dpsEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -255,10 +256,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         IfrmEliminar ventana = new IfrmEliminar();
-        dspEscritorio.add(ventana);
+        dpsEscritorio.add(ventana);
         ventana.setLocation(
-            (dspEscritorio.getWidth() - ventana.getWidth()) / 2,
-            (dspEscritorio.getHeight() - ventana.getHeight()) / 2
+            (dpsEscritorio.getWidth() - ventana.getWidth()) / 2,
+            (dpsEscritorio.getHeight() - ventana.getHeight()) / 2
         );
         ventana.setVisible(true);
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -281,18 +282,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
         if(seleccion == 0){
             IfrmEstudiante ventanaEst = new IfrmEstudiante();
-            dspEscritorio.add(ventanaEst);
+            dpsEscritorio.add(ventanaEst);
             ventanaEst.setLocation(
-                (dspEscritorio.getWidth() - ventanaEst.getWidth()) / 2,
-                (dspEscritorio.getHeight() - ventanaEst.getHeight()) / 2
+                (dpsEscritorio.getWidth() - ventanaEst.getWidth()) / 2,
+                (dpsEscritorio.getHeight() - ventanaEst.getHeight()) / 2
             );
             ventanaEst.setVisible(true);
         } else if(seleccion == 1){
             ifrmDocente ventanaDoc = new ifrmDocente();
-            dspEscritorio.add(ventanaDoc);
+            dpsEscritorio.add(ventanaDoc);
             ventanaDoc.setLocation(
-                (dspEscritorio.getWidth() - ventanaDoc.getWidth()) / 2,
-                (dspEscritorio.getHeight() - ventanaDoc.getHeight()) / 2
+                (dpsEscritorio.getWidth() - ventanaDoc.getWidth()) / 2,
+                (dpsEscritorio.getHeight() - ventanaDoc.getHeight()) / 2
             );
             ventanaDoc.setVisible(true);
         }
@@ -316,18 +317,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
         );
         if(seleccion == 0){
             IfrmHistorialRegistro historial= new IfrmHistorialRegistro();
-            dspEscritorio.add(historial);
+            dpsEscritorio.add(historial);
             historial.setLocation(
-                (dspEscritorio.getWidth() - historial.getWidth()) / 2,
-                (dspEscritorio.getHeight() - historial.getHeight()) / 2
+                (dpsEscritorio.getWidth() - historial.getWidth()) / 2,
+                (dpsEscritorio.getHeight() - historial.getHeight()) / 2
             );
             historial.setVisible(true);
         } else if(seleccion == 1){
             IfrmHistorialProfesor historial= new IfrmHistorialProfesor();
-            dspEscritorio.add(historial);
+            dpsEscritorio.add(historial);
             historial.setLocation(
-                (dspEscritorio.getWidth() - historial.getWidth()) / 2,
-                (dspEscritorio.getHeight() - historial.getHeight()) / 2
+                (dpsEscritorio.getWidth() - historial.getWidth()) / 2,
+                (dpsEscritorio.getHeight() - historial.getHeight()) / 2
             );
             historial.setVisible(true);
         }
@@ -375,9 +376,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnHistorial;
     private javax.swing.JButton btnRegistro;
-    private javax.swing.JDesktopPane dspEscritorio;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JDesktopPane dpsEscritorio;
     private javax.swing.JLabel lblBienvenida;
+    private javax.swing.JLabel lblContacto;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JPanel panContacto;

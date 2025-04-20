@@ -35,22 +35,22 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        grupoTipo = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new RoundedPanel();
+        btgTipo = new javax.swing.ButtonGroup();
+        panFondo = new javax.swing.JPanel();
+        panCodigo = new RoundedPanel();
         lblMensaje = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         btnEliminar = new FlatButton("Eliminar");
         lblLogo = new javax.swing.JLabel();
-        rbEstudiante = new javax.swing.JRadioButton();
-        rbDocente = new javax.swing.JRadioButton();
+        jrbEstudiante = new javax.swing.JRadioButton();
+        jrbDocente = new javax.swing.JRadioButton();
 
         setClosable(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        panFondo.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(11, 55, 97));
+        panCodigo.setBackground(new java.awt.Color(11, 55, 97));
 
         lblMensaje.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblMensaje.setForeground(new java.awt.Color(255, 255, 255));
@@ -60,21 +60,21 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
         txtCodigo.setBorder(null);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panCodigoLayout = new javax.swing.GroupLayout(panCodigo);
+        panCodigo.setLayout(panCodigoLayout);
+        panCodigoLayout.setHorizontalGroup(
+            panCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCodigoLayout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCodigo)
                     .addComponent(jSeparator1))
                 .addGap(55, 55, 55))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panCodigoLayout.setVerticalGroup(
+            panCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panCodigoLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(lblMensaje)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -96,50 +96,50 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-.png"))); // NOI18N
 
-        grupoTipo.add(rbEstudiante);
-        rbEstudiante.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        rbEstudiante.setText("Estudiante");
-        rbEstudiante.addActionListener(new java.awt.event.ActionListener() {
+        btgTipo.add(jrbEstudiante);
+        jrbEstudiante.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jrbEstudiante.setText("Estudiante");
+        jrbEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbEstudianteActionPerformed(evt);
+                jrbEstudianteActionPerformed(evt);
             }
         });
 
-        grupoTipo.add(rbDocente);
-        rbDocente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        rbDocente.setText("Docente");
+        btgTipo.add(jrbDocente);
+        jrbDocente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jrbDocente.setText("Docente");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panFondoLayout = new javax.swing.GroupLayout(panFondo);
+        panFondo.setLayout(panFondoLayout);
+        panFondoLayout.setHorizontalGroup(
+            panFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panFondoLayout.createSequentialGroup()
                 .addContainerGap(49, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panFondoLayout.createSequentialGroup()
                         .addComponent(lblLogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(panFondoLayout.createSequentialGroup()
                 .addGap(140, 140, 140)
-                .addComponent(rbEstudiante)
+                .addComponent(jrbEstudiante)
                 .addGap(65, 65, 65)
-                .addComponent(rbDocente)
+                .addComponent(jrbDocente)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panFondoLayout.setVerticalGroup(
+            panFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panFondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbEstudiante)
-                    .addComponent(rbDocente))
+                .addGroup(panFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbEstudiante)
+                    .addComponent(jrbDocente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLogo)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -149,11 +149,11 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -177,9 +177,11 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
             );
             return;
         }
+
         
         // Validación: tipo de usuario no seleccionado
-        if(grupoTipo.getSelection() == null){
+
+        if(btgTipo.getSelection() == null){
             JOptionPane.showMessageDialog(
                 this,
                 "Por favor, seleccione el tipo de usuario a eliminar",
@@ -190,7 +192,8 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         }
         
           // Eliminar estudiante
-        if (rbEstudiante.isSelected()) {
+        if (jrbEstudiante.isSelected()) {
+
             ListaEstudiantes lista = new ListaEstudiantes();
             boolean ok = lista.eliminarEstudiante(codigo);
             if (ok) {
@@ -199,7 +202,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "❌ No se encontró ningún estudiante con ese código.", "No encontrado", JOptionPane.ERROR_MESSAGE);
             }
             // Eliminar docente
-        } else if (rbDocente.isSelected()) {
+        } else if (jrbDocente.isSelected()) {
             ListaIngresosDocente lista = new ListaIngresosDocente();
             boolean ok = lista.eliminarPorCodigo(codigo);
             if (ok) {
@@ -214,21 +217,21 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         txtCodigo.requestFocus();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void rbEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEstudianteActionPerformed
+    private void jrbEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEstudianteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbEstudianteActionPerformed
+    }//GEN-LAST:event_jrbEstudianteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgTipo;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.ButtonGroup grupoTipo;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JRadioButton jrbDocente;
+    private javax.swing.JRadioButton jrbEstudiante;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMensaje;
-    private javax.swing.JRadioButton rbDocente;
-    private javax.swing.JRadioButton rbEstudiante;
+    private javax.swing.JPanel panCodigo;
+    private javax.swing.JPanel panFondo;
     private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables
 }
