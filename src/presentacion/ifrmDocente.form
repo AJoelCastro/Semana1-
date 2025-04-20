@@ -103,6 +103,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
+
                           <Component id="sepCodigo" pref="228" max="32767" attributes="0"/>
                           <Component id="sepEspecialidad" max="32767" attributes="0"/>
                           <Component id="sepDepartamento" max="32767" attributes="0"/>
@@ -110,6 +111,7 @@
                           <Component id="sepDni" max="32767" attributes="0"/>
                           <Component id="sepApellidos" max="32767" attributes="0"/>
                           <Component id="sepNombres" max="32767" attributes="0"/>
+
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="cmbDia" min="-2" pref="64" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
