@@ -70,7 +70,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(11, 55, 97));
 
-        cmbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AÑO", "2025", "2026", "2027", "2028" }));
+        cmbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AÑO", " ", "2025", "2026", "2027", "2028", "2029", "2030 " }));
         cmbAño.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -86,7 +86,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         txtEspecialidad.setForeground(new java.awt.Color(255, 255, 255));
         txtEspecialidad.setBorder(null);
 
-        cmbDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIA", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cmbDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIA", " ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         cmbDia.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -128,7 +128,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombrado", "Contratado" }));
         cmbTipo.setSelectedIndex(-1);
 
-        cmbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MES", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cmbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MES", " ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         cmbMes.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -207,27 +207,26 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator7, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jSeparator6)
-                        .addComponent(jSeparator5)
-                        .addComponent(jSeparator4)
-                        .addComponent(jSeparator3)
-                        .addComponent(jSeparator2)
-                        .addComponent(jSeparator1)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                            .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNombres)
-                        .addComponent(txtApellidos)
-                        .addComponent(txtDni)
-                        .addComponent(txtEdad)
-                        .addComponent(txtDepartamento)
-                        .addComponent(txtEspecialidad)
-                        .addComponent(txtCodigo)))
+                    .addComponent(jSeparator6)
+                    .addComponent(jSeparator5)
+                    .addComponent(jSeparator4)
+                    .addComponent(jSeparator3)
+                    .addComponent(jSeparator2)
+                    .addComponent(jSeparator1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNombres)
+                    .addComponent(txtApellidos)
+                    .addComponent(txtDni)
+                    .addComponent(txtEdad)
+                    .addComponent(txtDepartamento)
+                    .addComponent(txtEspecialidad)
+                    .addComponent(txtCodigo))
                 .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
