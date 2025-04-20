@@ -12,13 +12,15 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author ArcosArce
+ * Clase IfrmEliminar - Ventana interna para eliminar registros de estudiantes o docentes.
+ * Permite al usuario ingresar un código y seleccionar el tipo de usuario a eliminar.
+ * 
  */
 public class IfrmEliminar extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form IfrmEliminar
+     * Constructor de la clase IfrmEliminar.
+     * Inicializa los componentes gráficos de la ventana.
      */
     public IfrmEliminar() {
         initComponents();
@@ -157,9 +159,15 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+/**
+     * Acción del botón "Eliminar".
+     * Verifica que se haya ingresado un código y que se haya seleccionado el tipo de usuario.
+     * Luego elimina al estudiante o docente según el código ingresado.
+     */    
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         String codigo = txtCodigo.getText().trim();
 
+        // Validación: campo de código vacío
         if (codigo.isEmpty()) {
             JOptionPane.showMessageDialog(
                 this,
@@ -169,6 +177,10 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
             );
             return;
         }
+
+        
+        // Validación: tipo de usuario no seleccionado
+
         if(btgTipo.getSelection() == null){
             JOptionPane.showMessageDialog(
                 this,
@@ -178,8 +190,10 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
             );
             return;
         }
-
+        
+          // Eliminar estudiante
         if (jrbEstudiante.isSelected()) {
+
             ListaEstudiantes lista = new ListaEstudiantes();
             boolean ok = lista.eliminarEstudiante(codigo);
             if (ok) {
@@ -187,6 +201,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "❌ No se encontró ningún estudiante con ese código.", "No encontrado", JOptionPane.ERROR_MESSAGE);
             }
+            // Eliminar docente
         } else if (jrbDocente.isSelected()) {
             ListaIngresosDocente lista = new ListaIngresosDocente();
             boolean ok = lista.eliminarPorCodigo(codigo);
@@ -196,7 +211,8 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "❌ No se encontró ningún docente con ese código.", "No encontrado", JOptionPane.ERROR_MESSAGE);
             }
         }
-
+        
+        // Limpiar campo y dejar el foco listo para un nuevo ingreso
         txtCodigo.setText("");
         txtCodigo.requestFocus();
     }//GEN-LAST:event_btnEliminarActionPerformed

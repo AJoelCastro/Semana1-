@@ -7,24 +7,37 @@ import datos.*;
 import entidades.*;
 import javax.swing.JOptionPane;
 /**
- *
- * @author USER
+ * Clase IfrmEstudiante
+ * Representa la interfaz gráfica (ventana interna) para el registro de estudiantes.
+ * Permite al usuario ingresar y guardar los datos de un estudiante: nombre, código de matrícula
+ * y escuela profesional. Estos datos se almacenan en una lista de estudiantes.
  */
 public class IfrmEstudiante extends javax.swing.JInternalFrame {
+    /**
+     * Lista que contiene los estudiantes registrados.
+     */
     public ListaEstudiantes lista;
     
-    
+    /**
+     * Constructor que inicializa la interfaz y la lista de estudiantes.
+     */
     public IfrmEstudiante() {
         initComponents();
         this.lista= new ListaEstudiantes();
     }
     
+    /**
+     * Limpia los campos de texto del formulario.
+     */
     public void limpiar(){
         txtNombre.setText(null);
         txtCodigo.setText(null);
         txtEscuela.setText(null);
     }
     
+    /**
+     * Retorna la lista de estudiantes.
+     */
     public ListaEstudiantes getLista() {
         return lista;
     }
@@ -202,13 +215,20 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción que se ejecuta al presionar el botón "Guardar".
+     * Valida que todos los campos estén llenos, crea un nuevo estudiante y lo
+     * añade a la lista, luego limpia los campos e informa al usuario.
+     */
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     String nombre;
     String codigo;
     String escuela;
     
+
     nombre= txtNombre.getText();
     codigo= txtCodigo.getText();
+
     escuela= txtEscuela.getText();
      if (nombre.isEmpty() || codigo.isEmpty() || escuela.isEmpty()) {
         JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
