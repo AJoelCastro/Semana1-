@@ -386,7 +386,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
 
         // Verifica si la edad está en un rango válido
         if (edadInt <= 0 || edadInt > 100) {
-            JOptionPane.showMessageDialog(this, "⚠️ Ingrese una edad válida entre 1 y 120.");
+            JOptionPane.showMessageDialog(this, "⚠️ Ingrese una edad válida entre 1 y 100.");
             txtEdad.requestFocus();
             return;
         }

@@ -239,6 +239,7 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
     limpiar();
     txtNombre.requestFocus();
     JOptionPane.showMessageDialog(this, "✅ Estudiante guardado correctamente.");
+    this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
