@@ -350,7 +350,7 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         nombres= txtNombres.getText();
         apellidos = txtApellidos.getText();
         dni = txtDni.getText();
-        edad = txtEdad.getText();
+        edad = txtEdad.getText();        
         departamento = txtDepartamento.getText();
         especialidad = txtEspecialidad.getText();
         codigo = txtCodigo.getText();
@@ -367,6 +367,35 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
         }
         else{
             tipo = tipe.toString();
+        }
+        // Validar DNI: solo números y 8 dígitos
+        if (!dni.matches("\\d{8}")) {
+            JOptionPane.showMessageDialog(this, "⚠️ El DNI debe contener exactamente 8 números.");
+            txtDni.requestFocus();
+            return;
+        }
+        try {
+        int edadInt = Integer.parseInt(edad); // Intenta convertirla a entero
+
+        // Verifica si la edad está en un rango válido
+        if (edadInt <= 0 || edadInt > 100) {
+            JOptionPane.showMessageDialog(this, "⚠️ Ingrese una edad válida entre 1 y 120.");
+            txtEdad.requestFocus();
+            return;
+        }
+
+        } catch (NumberFormatException e) {
+            // Si no se puede convertir (por ejemplo, si hay letras), muestra mensaje
+            JOptionPane.showMessageDialog(this, "⚠️ La edad debe ser un número entero válido.");
+            txtEdad.requestFocus();
+            return;
+        }
+        
+        // Validar código: solo números y 10 dígitos
+        if (!codigo.matches("\\d{10}")) {
+            JOptionPane.showMessageDialog(this, "⚠️ El código debe contener exactamente 10 números.");
+            txtCodigo.requestFocus();
+            return;
         }
         if (dia == 0 ||  mes == 0 ||  año == 0) {
             JOptionPane.showMessageDialog(this, "⚠️ Por favor, seleccione una fecha válida.");

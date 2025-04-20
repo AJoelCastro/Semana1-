@@ -225,7 +225,7 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
     String codigo;
     String escuela;
     
-    nombre= txtNombre.getText();
+    nombre= txtNombre.getText();  
     codigo= txtCod.getText();
     escuela= txtEscuela.getText();
      if (nombre.isEmpty() || codigo.isEmpty() || escuela.isEmpty()) {
