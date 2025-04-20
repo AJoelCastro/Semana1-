@@ -69,13 +69,14 @@ public class ListaEstudiantes {
     }
 
     public boolean buscarPorCodigoMatricula(String codigoM) {
-        ArrayList<Estudiante> listaE = leerEstudiantes();
+        ArrayList<Estudiante> listaE = leerEstudiantes(); // Obtiene la lista actual de estudiantes
         for (Estudiante e : listaE) {
+            // Compara el código del estudiante con el código buscado
             if (e.getCodigo().equals(codigoM)) {
-                return true;
+                return true; // Se encontró un estudiante con el código dado
             }
         }
-        return false;
+        return false; // No se encontró ningún estudiante con el código buscado
     }
 
 }
