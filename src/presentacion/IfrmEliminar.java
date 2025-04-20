@@ -38,6 +38,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         jPanel2 = new RoundedPanel();
         lblMensaje = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         btnEliminar = new FlatButton("Eliminar");
         lblLogo = new javax.swing.JLabel();
         rbEstudiante = new javax.swing.JRadioButton();
@@ -49,8 +50,13 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(11, 55, 97));
 
+        lblMensaje.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblMensaje.setForeground(new java.awt.Color(255, 255, 255));
         lblMensaje.setText("Ingrese el código del estudiante o docente a eliminar:");
+
+        txtCodigo.setBackground(new java.awt.Color(11, 55, 97));
+        txtCodigo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCodigo.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -60,7 +66,8 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
                 .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCodigo))
+                    .addComponent(txtCodigo)
+                    .addComponent(jSeparator1))
                 .addGap(55, 55, 55))
         );
         jPanel2Layout.setVerticalGroup(
@@ -70,10 +77,13 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
                 .addComponent(lblMensaje)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         btnEliminar.setBackground(new java.awt.Color(11, 55, 97));
+        btnEliminar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +95,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-.png"))); // NOI18N
 
         grupoTipo.add(rbEstudiante);
+        rbEstudiante.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         rbEstudiante.setText("Estudiante");
         rbEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +104,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         });
 
         grupoTipo.add(rbDocente);
+        rbDocente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         rbDocente.setText("Docente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -100,16 +112,16 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblLogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(149, 149, 149)
+                .addGap(140, 140, 140)
                 .addComponent(rbEstudiante)
                 .addGap(65, 65, 65)
                 .addComponent(rbDocente)
@@ -128,7 +140,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLogo)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,6 +164,15 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(
                 this,
                 "⚠️ Debe ingresar un código válido.",
+                "Error",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+        if(grupoTipo.getSelection() == null){
+            JOptionPane.showMessageDialog(
+                this,
+                "Por favor, seleccione el tipo de usuario a eliminar",
                 "Error",
                 JOptionPane.WARNING_MESSAGE
             );
@@ -190,6 +211,7 @@ public class IfrmEliminar extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup grupoTipo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMensaje;
     private javax.swing.JRadioButton rbDocente;
