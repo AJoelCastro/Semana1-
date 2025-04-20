@@ -4,11 +4,13 @@
  */
 package entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Administrador
  */
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     private String nombre;
     private String apellido;
     private String dni;
