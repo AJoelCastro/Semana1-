@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package presentacion;
+
 import datos.ListaIngresosDocente;
 import entidades.IngresoDocente;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author artur
@@ -158,17 +160,19 @@ public class IfrmHistorialProfesor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
-        // TODO add your handling code here:
+        // Este método se ejecuta automáticamente cuando se abre la ventana interna (JInternalFrame)
         ListaIngresosDocente lista = new ListaIngresosDocente();
+        // Crear una instancia de la clase que maneja los registros de docentes
         DefaultTableModel modelo = lista.getContenido();
-
+        // Obtener el modelo de tabla con los datos de los docentes
         if (modelo != null) {
             tblHistorial.setModel(modelo);
+            // Asignar el modelo a la tabla gráfica (tblHistorial) para mostrar los datos
         } else {
             JOptionPane.showMessageDialog(this, "No hay profesores registrados");
+            // Mostrar un mensaje si no hay datos para cargar
         }
     }//GEN-LAST:event_formInternalFrameOpened
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
