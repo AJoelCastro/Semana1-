@@ -3,46 +3,57 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package presentacion;
+
 import datos.ListaEstudiantes;
 import entidades.Estudiante;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER
  */
 public class IfrmHistorialRegistro extends javax.swing.JInternalFrame {
+
+    // Instancia de la clase que gestiona la lista de estudiantes
     private ListaEstudiantes lista;
+
     /**
-     * Creates new form IfrmHistorialRegistro
+     * Constructor de la ventana interna. Inicializa los componentes y carga la
+     * lista de estudiantes en la tabla.
      */
     public IfrmHistorialRegistro() {
-        initComponents();
-        this.lista= new ListaEstudiantes();
-        imprimir();
+        initComponents(); // Método generado por NetBeans para inicializar la interfaz gráfica
+        this.lista = new ListaEstudiantes(); // Crear nueva instancia para acceder a los estudiantes
+        imprimir(); // Cargar y mostrar los datos en la tabla
     }
-    
-    public void imprimir() {
-    ArrayList<Estudiante> estudiantes = lista.leerEstudiantes();
-    DefaultTableModel modelo = (DefaultTableModel) tlbHistorial.getModel();
-    modelo.setRowCount(0);
 
-    if (estudiantes.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "No se encontraron estudiantes guardados.");
-    } else {
-        
-        for (int i = 0; i < estudiantes.size(); i++) {
-            Estudiante estudiante = estudiantes.get(i);  
-            Object[] fila = new Object[3];
-            fila[0] = estudiante.getNombre();
-            fila[1] = estudiante.getCodigo();
-            fila[2] = estudiante.getEscuela();
-            modelo.addRow(fila);
+    /**
+     * Método que lee la lista de estudiantes y los imprime en la tabla gráfica.
+     */
+    public void imprimir() {
+        ArrayList<Estudiante> estudiantes = lista.leerEstudiantes(); // Leer estudiantes desde archivo
+
+        DefaultTableModel modelo = (DefaultTableModel) tlbHistorial.getModel(); // Obtener el modelo de la tabla
+        modelo.setRowCount(0); // Limpiar filas anteriores (si las hubiera)
+
+        if (estudiantes.isEmpty()) {
+            // Mostrar mensaje si no hay datos
+            JOptionPane.showMessageDialog(this, "No se encontraron estudiantes guardados.");
+        } else {
+            // Llenar la tabla con los datos de los estudiantes
+            for (int i = 0; i < estudiantes.size(); i++) {
+                Estudiante estudiante = estudiantes.get(i);
+                Object[] fila = new Object[3];
+                fila[0] = estudiante.getNombre();   // Columna 1: Nombre
+                fila[1] = estudiante.getCodigo();   // Columna 2: Código
+                fila[2] = estudiante.getEscuela();  // Columna 3: Escuela
+
+                modelo.addRow(fila); // Agregar la fila al modelo de la tabla
+            }
         }
     }
-}
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
