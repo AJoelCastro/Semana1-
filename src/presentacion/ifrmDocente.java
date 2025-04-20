@@ -343,43 +343,66 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-        //ingreso de datos
-        Object tipe;
+    // Ingreso de datos desde el formulario
+        Object tipe; // Objeto temporal para guardar la opción seleccionada del ComboBox de tipo
         String nombres, apellidos, dni, edad, codigo, departamento, tipo, especialidad;
         int dia, mes, año, tipoInt;
-        nombres= txtNombres.getText();
+
+    // Obtener valores de los campos de texto
+        nombres = txtNombres.getText();
         apellidos = txtApellidos.getText();
         dni = txtDni.getText();
         edad = txtEdad.getText();
         departamento = txtDepartamento.getText();
         especialidad = txtEspecialidad.getText();
         codigo = txtCodigo.getText();
-        tipoInt = cmbTipo.getSelectedIndex();
-        tipe= cmbTipo.getSelectedItem();
-        dia = cmbDia.getSelectedIndex();
-        mes = cmbMes.getSelectedIndex();
-        año = cmbAño.getSelectedIndex();
-        
-        if (nombres.isEmpty() || codigo.isEmpty() ||  apellidos.isEmpty()||  dni.isEmpty() || departamento.isEmpty()|| 
-                especialidad.isEmpty() ||   tipe==null ){
-            JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
-            return;
-        }
-        else{
-            tipo = tipe.toString();
-        }
-        if (dia == 0 ||  mes == 0 ||  año == 0) {
-            JOptionPane.showMessageDialog(this, "⚠️ Por favor, seleccione una fecha válida.");
-            return;
-        }
-        IngresoDocente profesor = new IngresoDocente( tipo,departamento, codigo,  especialidad,  nombres,
-            apellidos,  dni, edad, new GregorianCalendar(año,mes-1,dia));
-        ListaIngresosDocente listaProfesor = new ListaIngresosDocente();
-        listaProfesor.agregarIngreso(profesor);
 
+    // Obtener selección del ComboBox de tipo (ej. Nombrado, Contratado, etc.)
+        tipoInt = cmbTipo.getSelectedIndex();         // Índice seleccionado
+        tipe = cmbTipo.getSelectedItem();             // Objeto seleccionado
+
+    // Obtener fecha desde los ComboBox de día, mes y año
+        dia = cmbDia.getSelectedIndex();              // Índice del día seleccionado
+        mes = cmbMes.getSelectedIndex();              // Índice del mes seleccionado
+        año = cmbAño.getSelectedIndex();              // Índice del año seleccionado
+
+    // Validar que todos los campos obligatorios estén llenos
+        if (nombres.isEmpty() || codigo.isEmpty() || apellidos.isEmpty() || dni.isEmpty()
+                || departamento.isEmpty() || especialidad.isEmpty() || tipe == null) {
+
+            JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
+            return; // Detener ejecución si falta algún dato
+        } else {
+            tipo = tipe.toString(); // Convertir el objeto seleccionado a String
+        }
+
+    // Validar que se haya seleccionado una fecha válida (índice 0 normalmente es "Seleccione")
+        if (dia == 0 || mes == 0 || año == 0) {
+            JOptionPane.showMessageDialog(this, "⚠️ Por favor, seleccione una fecha válida.");
+            return; // Detener si no se ha escogido correctamente la fecha
+        }
+
+    // Crear un objeto IngresoDocente con los datos ingresados
+        IngresoDocente profesor = new IngresoDocente(
+                tipo, // Tipo de contrato
+                departamento, // Departamento
+                codigo, // Código de docente
+                especialidad, // Especialidad
+                nombres, // Nombres
+                apellidos, // Apellidos
+                dni, // DNI
+                edad, // Edad
+                new GregorianCalendar(año, mes - 1, dia) // Fecha de ingreso (mes - 1 porque enero = 0)
+        );
+
+    // Guardar el nuevo docente en la lista
+        ListaIngresosDocente listaProfesor = new ListaIngresosDocente();
+        listaProfesor.agregarIngreso(profesor); // Agregar el nuevo ingreso a los registros
+
+    // Confirmar al usuario y cerrar la ventana
         JOptionPane.showMessageDialog(this, "Docente Registrado Correctamente");
-        this.dispose();
+        this.dispose(); // Cerrar el formulario
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
@@ -391,21 +414,29 @@ public class ifrmDocente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmbMesActionPerformed
 
     private void cmbDiaPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmbDiaPopupMenuWillBecomeVisible
-        if(cmbDia.getItemAt(0).equals("DIA")){
-            cmbDia.removeItemAt(0);
-        }
+     // Este método se ejecuta justo antes de que el menú desplegable (ComboBox) de días se abra
+    if (cmbDia.getItemAt(0).equals("DIA")) {
+        // Si el primer ítem del ComboBox aún es el texto de ayuda "DIA"
+        cmbDia.removeItemAt(0);
+        // Se elimina ese ítem para que no aparezca como opción seleccionable
+    }
     }//GEN-LAST:event_cmbDiaPopupMenuWillBecomeVisible
 
     private void cmbMesPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmbMesPopupMenuWillBecomeVisible
-        if(cmbMes.getItemAt(0).equals("MES")){
-            cmbMes.removeItemAt(0);
-        }
+    // Este método se ejecuta justo antes de que el ComboBox 'cmbMes' (meses) despliegue su lista
+    if (cmbMes.getItemAt(0).equals("MES")) {
+        // Si el primer elemento del ComboBox es aún el texto de ayuda "MES"
+        cmbMes.removeItemAt(0);
+        // Elimina ese primer ítem para que no aparezca como opción seleccionable al usuario
+    }
     }//GEN-LAST:event_cmbMesPopupMenuWillBecomeVisible
 
     private void cmbAñoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmbAñoPopupMenuWillBecomeVisible
-        if(cmbAño.getItemAt(0).equals("AÑO")){
-            cmbAño.removeItemAt(0);
-        }
+    if (cmbAño.getItemAt(0).equals("AÑO")) {
+        // Verifica si el primer ítem del ComboBox de años es el texto guía "AÑO"
+    cmbAño.removeItemAt(0);
+        // Elimina ese ítem para que no sea seleccionable por el usuario
+    }
     }//GEN-LAST:event_cmbAñoPopupMenuWillBecomeVisible
 
 
