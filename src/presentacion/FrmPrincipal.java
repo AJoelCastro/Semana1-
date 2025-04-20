@@ -16,23 +16,30 @@ import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
 
 /**
- *
- * @author USER
+ * Clase FrmPrincipal - Ventana principal de la aplicación.
+ * Esta interfaz gráfica está compuesta por un escritorio (JDesktopPane)
+ * que contiene un panel de contacto superior y un formulario central con botones
+ * para registrar, eliminar y visualizar historial de usuarios (estudiantes o docentes).
+ * 
+ * Autor: USER
  */
 public class FrmPrincipal extends javax.swing.JFrame {
     ListaEstudiantes lista;
     /**
-     * Creates new form FrmPrincipal
+     * Constructor de la clase FrmPrincipal.
+     * Inicializa los componentes de la interfaz y organiza su disposición.
      */
     public FrmPrincipal() {
         initComponents();
-        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH); // Maximiza la ventana
         
+        // Configura y organiza manualmente los paneles dentro del escritorio
         dspEscritorio.remove(panForm);
         dspEscritorio.remove(panContacto);
         
         dspEscritorio.setLayout(null);
         
+        // Ajusta tamaño de los paneles
         panContacto.setSize(
             dspEscritorio.getWidth(),
             panContacto.getPreferredSize().height
@@ -44,13 +51,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel2.setSize(jLabel2.getPreferredSize());
         anclarLabel();
         panContacto.setLocation(0, 0);
-        centrarPanel(panForm);
+        centrarPanel(panForm); // Centra el formulario
         
         dspEscritorio.add(panContacto);
         dspEscritorio.add(panForm);
         
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // Centra la ventana principal
         
+        // Listeners para redimensionar automáticamente paneles
         dspEscritorio.addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
             public void componentResized(java.awt.event.ComponentEvent e) {
@@ -71,12 +79,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         
     }
+    
+    /**
+     * Posiciona el jLabel2 (texto de contacto) en la esquina superior derecha del panel de contacto.
+     */
     private void anclarLabel() {
         int margen = 10;
         int x = panContacto.getWidth() - jLabel2.getWidth() - margen;
         int y = margen;
         jLabel2.setLocation(x, y);
     }
+    
+    /**
+     * Centra un panel en el escritorio
+     */
     private void centrarPanel(JPanel panel) {
         int x = (dspEscritorio.getWidth() - panel.getWidth()) / 2;
         int y = (dspEscritorio.getHeight() - panel.getHeight()) / 2;
@@ -234,6 +250,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción del botón "Eliminar". Abre el formulario de eliminación de usuarios.
+     */
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         IfrmEliminar ventana = new IfrmEliminar();
         dspEscritorio.add(ventana);
@@ -244,6 +263,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ventana.setVisible(true);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+/**
+     * Acción del botón "Registrar". Muestra una ventana para seleccionar el tipo de usuario
+     * y abre el formulario correspondiente.
+     */   
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         String[] opciones = {"Estudiante", "Maestro"};
         int seleccion = JOptionPane.showOptionDialog(this,
@@ -275,6 +298,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegistroActionPerformed
 
+    /**
+     * Acción del botón "Historial". Permite seleccionar el historial de estudiantes o docentes
+     * y abre la ventana correspondiente.
+     */
     private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
         String[] opciones = {"Estudiante", "Maestro"};
         int seleccion = JOptionPane.showOptionDialog(this,
@@ -308,6 +335,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
  
     /**
      * @param args the command line arguments
+     */
+    /**
+     * Método principal para iniciar la aplicación.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
