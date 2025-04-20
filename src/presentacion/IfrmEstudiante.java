@@ -3,28 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package presentacion;
+
 import datos.*;
 import entidades.*;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER
  */
 public class IfrmEstudiante extends javax.swing.JInternalFrame {
+
     public ListaEstudiantes lista;
-    
-    
+
     public IfrmEstudiante() {
         initComponents();
-        this.lista= new ListaEstudiantes();
+        this.lista = new ListaEstudiantes();
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         txtNombre.setText(null);
         txtCod.setText(null);
         txtEscuela.setText(null);
     }
-    
+
     public ListaEstudiantes getLista() {
         return lista;
     }
@@ -203,22 +205,26 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    String nombre;
-    String codigo;
-    String escuela;
-    
-    nombre= txtNombre.getText();
-    codigo= txtCod.getText();
-    escuela= txtEscuela.getText();
-     if (nombre.isEmpty() || codigo.isEmpty() || escuela.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
-        return;
-    }
-    Estudiante nuevo = new Estudiante(nombre, codigo, escuela);
-    lista.añadirEstudianteHistorial(nuevo);
-    limpiar();
-    txtNombre.requestFocus();
-    JOptionPane.showMessageDialog(this, "✅ Estudiante guardado correctamente.");
+        String nombre;
+        String codigo;
+        String escuela;
+
+        nombre = txtNombre.getText();
+        codigo = txtCod.getText();
+        escuela = txtEscuela.getText();
+        if (nombre.isEmpty() || codigo.isEmpty() || escuela.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
+            return;
+        }
+        if (lista.buscarPorCodigoMatricula(codigo)) {
+            JOptionPane.showMessageDialog(this, "El estudiante ya está registrado.");
+            return;
+        }
+        Estudiante nuevo = new Estudiante(nombre, codigo, escuela);
+        lista.añadirEstudianteHistorial(nuevo);
+        limpiar();
+        txtNombre.requestFocus();
+        JOptionPane.showMessageDialog(this, "✅ Estudiante guardado correctamente.");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
