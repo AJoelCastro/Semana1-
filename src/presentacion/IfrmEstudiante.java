@@ -235,7 +235,7 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
         String escuela;
 
         nombre = txtNombre.getText();
-        codigo = txtCod.getText();
+        codigo = txtCodigo.getText();
         escuela = txtEscuela.getText();
         if (nombre.isEmpty() || codigo.isEmpty() || escuela.isEmpty()) {
             JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
