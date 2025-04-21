@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package presentacion;
+
 import datos.*;
 import entidades.*;
 import javax.swing.JOptionPane;
+
 /**
  * Clase IfrmEstudiante
  * Representa la interfaz gráfica (ventana interna) para el registro de estudiantes.
@@ -13,6 +15,7 @@ import javax.swing.JOptionPane;
  * y escuela profesional. Estos datos se almacenan en una lista de estudiantes.
  */
 public class IfrmEstudiante extends javax.swing.JInternalFrame {
+
     /**
      * Lista que contiene los estudiantes registrados.
      */
@@ -21,23 +24,28 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
     /**
      * Constructor que inicializa la interfaz y la lista de estudiantes.
      */
+
     public IfrmEstudiante() {
         initComponents();
-        this.lista= new ListaEstudiantes();
+        this.lista = new ListaEstudiantes();
     }
+
     
     /**
      * Limpia los campos de texto del formulario.
      */
     public void limpiar(){
+
         txtNombre.setText(null);
         txtCodigo.setText(null);
         txtEscuela.setText(null);
     }
+
     
     /**
      * Retorna la lista de estudiantes.
      */
+
     public ListaEstudiantes getLista() {
         return lista;
     }
@@ -221,25 +229,30 @@ public class IfrmEstudiante extends javax.swing.JInternalFrame {
      * añade a la lista, luego limpia los campos e informa al usuario.
      */
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    String nombre;
-    String codigo;
-    String escuela;
-    
 
-    nombre= txtNombre.getText();
-    codigo= txtCodigo.getText();
+        String nombre;
+        String codigo;
+        String escuela;
 
-    escuela= txtEscuela.getText();
-     if (nombre.isEmpty() || codigo.isEmpty() || escuela.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
-        return;
-    }
-    Estudiante nuevo = new Estudiante(nombre, codigo, escuela);
-    lista.añadirEstudianteHistorial(nuevo);
-    limpiar();
-    txtNombre.requestFocus();
-    JOptionPane.showMessageDialog(this, "✅ Estudiante guardado correctamente.");
-    this.dispose();
+        nombre = txtNombre.getText();
+        codigo = txtCod.getText();
+        escuela = txtEscuela.getText();
+        if (nombre.isEmpty() || codigo.isEmpty() || escuela.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "⚠️ Por favor, complete todos los campos antes de guardar.");
+            return;
+        }
+        if (lista.buscarPorCodigoMatricula(codigo)) {
+            JOptionPane.showMessageDialog(this, "El estudiante ya está registrado.");
+            return;
+        }
+        Estudiante nuevo = new Estudiante(nombre, codigo, escuela);
+        lista.añadirEstudianteHistorial(nuevo);
+        limpiar();
+        txtNombre.requestFocus();
+        JOptionPane.showMessageDialog(this, "✅ Estudiante guardado correctamente.");
+
+        this.dispose();
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
